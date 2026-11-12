@@ -1,0 +1,12 @@
+data/raw/
+*.fastq
+*.fastq.gz
+*.sra
+references/
+*.fa
+*.fna
+*.bt2
+*.bam
+*.bam.bai
+*.bw
+.DS_Store
