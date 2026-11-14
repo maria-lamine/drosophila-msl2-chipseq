@@ -1,0 +1,12 @@
+name: msl2-chipseq
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - sra-tools
+  - fastqc
+  - multiqc
+  - bowtie2
+  - samtools
+  - deeptools

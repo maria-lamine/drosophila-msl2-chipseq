@@ -10,3 +10,12 @@ references/
 *.bam.bai
 *.bw
 .DS_Store
+# Large bioinformatics binaries and reference indices
+results/
+references/
+data/
+*.bam
+*.bai
+*.bw
+*.bt2
+*.fastq*
