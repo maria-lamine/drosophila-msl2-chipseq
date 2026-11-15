@@ -1,2 +1,2 @@
-sample_id	geo_accession	sra_run	organism	cell_line	sex	target	antibody	library_layout	read_length	fastq_md5
-MSL2_ChIP_S2	GSM929149	SRR495368	Drosophila melanogaster	S2	male	MSL2-FLAG	anti-FLAG	SINGLE	36	c5ed574ae121cd8620d078ca5cc0f6bc
+sample_id	accession	organism	tissue_or_cell	target	antibody_or_tag	library_layout	read_length_bp	reference_genome
+GSM929149	GSM929149	Drosophila melanogaster	S2 cells (male)	MSL2	anti-MSL2	SINGLE	50	dm6
