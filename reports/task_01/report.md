@@ -62,6 +62,6 @@ All three genomic windows were inspected in IGV (`dm6`) displaying `GSM929149.dm
 ---
 
 ## 5. Limitations
-- **Absence of Matched Input / IgG Control:** Because only the MSL2-FLAG ChIP library (`GSM929149`) was analyzed without a matched input DNA or mock-IP control, background chromatin accessibility and copy-number biases cannot be normalized out; accordingly, formal peak calling (`MACS2`/`MACS3`) was omitted and track values represent single-sample normalized read depth (`CPM`).
+- **Absence of Matched Input / IgG Control:** It's because only the MSL2-FLAG ChIP library (`GSM929149`) was analyzed without a matched input DNA or mock-IP control, background chromatin accessibility and copy-number biases cannot be normalized out; accordingly, formal peak calling (`MACS2`/`MACS3`) was omitted and track values represent single-sample normalized read depth (`CPM`).
 - **Single Biological Replicate:** Analysis is based on a single SRA run (`SRR495368`), precluding irreproducible discovery rate (IDR) or replicate concordance testing.
 - **Short Single-End Reads (`36 bp`):** Short single-end sequencing increases multi-mapping ambiguity in repetitive regions, mitigated here by filtering for primary alignments with `MAPQ >= 30` and extending reads to `150 bp` during bigWig generation.
