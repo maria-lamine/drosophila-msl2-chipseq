@@ -1,0 +1,2 @@
+assembly	source	url	naming_convention	download_date	fasta_md5
+dm6	UCSC	https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.fa.gz	UCSC (chr2L, chr2R, chr3L, chr3R, chr4, chrX, chrY, chrM)	2026-11-14	5aadf7ccab5a6b674e76516bf75eaa09

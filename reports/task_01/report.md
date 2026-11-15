@@ -10,11 +10,11 @@
 ---
 
 ## 2. Reproducible Pipeline Architecture
-All processing steps are modularized into four Bash scripts under `scripts/task_01/` and executed inside the `msl2-chipseq` Conda environment:
-1. `01_fetch_and_qc.sh`: Downloads `SRR495368.fastq.gz`, verifies integrity, and runs FastQC + MultiQC.
-2. `02_align_and_filter.sh`: Aligns reads to `dm6` via `bowtie2`, sorts coordinates, marks/removes PCR duplicates, and filters for primary alignments with `MAPQ >= 30` (`samtools view -F 3844 -q 30`).
-3. `03_generate_tracks.sh`: Generates CPM-normalized coverage tracks (`GSM929149.dm6.CPM.bw`) using `deepTools bamCoverage` (`--binSize 10 --normalizeUsing CPM`).
-4. `04_extract_metrics.sh`: Extracts `samtools flagstat`, per-chromosome `idxstats`, and read distribution statistics.
+All processing steps are modularized into four Bash scripts under `scripts/` and executed inside the `msl2-chipseq` Conda environment:
+1. `scripts/01_download.sh`: Downloads `SRR495368` via SRA Toolkit, verifies integrity (`vdb-validate` and MD5), and downloads/indexes UCSC `dm6`.
+2. `scripts/02_fastq_qc.sh`: Runs `FastQC` on `SRR495368.fastq.gz`.
+3. `scripts/03_align_and_filter.sh`: Aligns reads to `dm6` via `bowtie2`, sorts/indexes coordinates, inspects unmapped reads, filters for primary alignments with `MAPQ >= 30` (`samtools view -F 0x904 -q 30`), measures PCR duplicates (`samtools markdup`), and aggregates metrics with `MultiQC`.
+4. `scripts/04_coverage.sh`: Generates CPM-normalized coverage tracks (`GSM929149.dm6.CPM.bw`) using `deepTools bamCoverage` (`--binSize 10 --normalizeUsing CPM --extendReads 150`).
 
 ---
 
@@ -22,7 +22,7 @@ All processing steps are modularized into four Bash scripts under `scripts/task_
 
 | Metric | Value | Notes |
 | :--- | :--- | :--- |
-| **Total Filtered Reads** | `32,530,464` | QC-passed primary alignments (`-F 3844 -q 30`) |
+| **Total Filtered Reads** | `32,530,464` | QC-passed primary alignments (`-F 0x904 -q 30`) |
 | **Secondary / Supplementary** | `0` | Excluded during filtering |
 | **PCR Duplicates** | `0` | Excluded during filtering |
 | **bigWig Track Size** | `62 MB` | `GSM929149.dm6.CPM.bw` (10 bp bins, CPM normalized) |
@@ -57,3 +57,11 @@ All three genomic windows were inspected in IGV (`dm6`) displaying `GSM929149.dm
 ### Figure 3: Autosomal Negative Control — *RpL32* (`chr3R:30,035,000-30,055,000`)
 ![MSL2 ChIP-seq at RpL32 locus](figures/fig3_chr3R_RpL32.png)
 - **Observation:** Despite high constitutive transcription of the ribosomal protein gene *RpL32* on `chr3R`, the `0–25 CPM` track remains flat at baseline background (`<2 CPM`) with no focal peaks, confirming chromosome-X specificity of MSL2 binding.
+
+
+---
+
+## 5. Limitations
+- **Absence of Matched Input / IgG Control:** Because only the MSL2-FLAG ChIP library (`GSM929149`) was analyzed without a matched input DNA or mock-IP control, background chromatin accessibility and copy-number biases cannot be normalized out; accordingly, formal peak calling (`MACS2`/`MACS3`) was omitted and track values represent single-sample normalized read depth (`CPM`).
+- **Single Biological Replicate:** Analysis is based on a single SRA run (`SRR495368`), precluding irreproducible discovery rate (IDR) or replicate concordance testing.
+- **Short Single-End Reads (`36 bp`):** Short single-end sequencing increases multi-mapping ambiguity in repetitive regions, mitigated here by filtering for primary alignments with `MAPQ >= 30` and extending reads to `150 bp` during bigWig generation.
