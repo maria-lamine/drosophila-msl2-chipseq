@@ -1,21 +1,22 @@
-data/raw/
+# Heavy raw and processed data
+data/
+references/
+results/*/bam/
+results/*/tracks/
+results/*/qc/**/*.zip
 *.fastq
 *.fastq.gz
 *.sra
-references/
-*.fa
-*.fna
-*.bt2
+*.sralite
 *.bam
 *.bam.bai
 *.bw
-.DS_Store
-# Large bioinformatics binaries and reference indices
-results/
-references/
-data/
-*.bam
-*.bai
-*.bw
+*.bigwig
 *.bt2
-*.fastq*
+*.fai
+
+# OS and IDE files
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+results/*/qc/*_data/

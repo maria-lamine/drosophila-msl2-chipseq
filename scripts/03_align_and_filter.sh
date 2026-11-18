@@ -11,6 +11,7 @@ bowtie2 -p 4 -x references/dm6 -U data/raw/SRR495368.fastq.gz \
   2> logs/task_01/bowtie2.GSM929149.log \
   | samtools sort -@ 4 -o "${RAW_BAM}" -
 samtools index "${RAW_BAM}"
+samtools quickcheck -v "${RAW_BAM}"
 
 # 2. QC metrics on unfiltered BAM (full idxstats without head!)
 samtools flagstat "${RAW_BAM}" > results/task_01/qc/GSM929149.sorted.flagstat.txt
@@ -25,6 +26,7 @@ rm -f data/tmp/SRR495368.unmapped.fastq.gz
 # 4. Filter: remove unmapped (0x4), secondary (0x100), supplementary (0x800); keep MAPQ >= 30
 samtools view -@ 4 -b -F 0x904 -q 30 -o "${FILT_BAM}" "${RAW_BAM}"
 samtools index "${FILT_BAM}"
+samtools quickcheck -v "${FILT_BAM}"
 
 # 5. QC metrics on filtered BAM
 samtools flagstat "${FILT_BAM}" > results/task_01/qc/GSM929149.primary_q30.flagstat.txt

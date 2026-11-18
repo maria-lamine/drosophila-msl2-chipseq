@@ -1,4 +1,7 @@
+* text=auto eol=lf
 *.sh text eol=lf
 *.tsv text eol=lf
-*.yml text eol=lf
 *.md text eol=lf
+*.yml text eol=lf
+*.png binary
+*.svg text eol=lf

@@ -1,6 +1,6 @@
 # Drosophila melanogaster MSL2 ChIP-seq Analysis (`GSM929149` / `SRR495368`)
 
-Reproducible bioinformatics pipeline and visual verification of MSL2-FLAG ChIP-seq in male *Drosophila melanogaster* S2 cells aligned to the UCSC `dm6` reference genome.
+Reproducible bioinformatics pipeline and visual verification of MSL2 ChIP-seq in male *Drosophila melanogaster* S2 cells aligned to the UCSC `dm6` reference genome.
 
 ## Repository Structure
 - `environment.yml`: Pinned Conda environment (`bowtie2`, `samtools`, `deeptools`, `fastqc`, `multiqc`, `sra-tools`).

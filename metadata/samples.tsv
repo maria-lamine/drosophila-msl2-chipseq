@@ -1,2 +1,2 @@
-sample_id	accession	organism	tissue_or_cell	target	antibody_or_tag	library_layout	read_length_bp	reference_genome
-GSM929149	GSM929149	Drosophila melanogaster	S2 cells (male)	MSL2	anti-MSL2	SINGLE	50	dm6
+sample_id	geo_series	geo_sample	sra_experiment	sra_run	assay	target	antibody	cell_line	organism	genotype	layout	read_length_bp	fastq_files	fastq_md5
+GSM929149	GSE37864	GSM929149	SRX146994	SRR495368	ChIP-seq	MSL2	rabbit polyclonal anti-MSL2 serum	S2	Drosophila melanogaster	wild-type	SINGLE	36	SRR495368.fastq.gz	c5ed574ae121cd8620d078ca5cc0f6bc

@@ -2,7 +2,6 @@ name: msl2-chipseq
 channels:
   - conda-forge
   - bioconda
-  - defaults
 dependencies:
   - bowtie2=2.5.5
   - deeptools=4.0.0
