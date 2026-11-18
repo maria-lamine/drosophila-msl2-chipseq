@@ -20,3 +20,10 @@ results/*/qc/**/*.zip
 .ipynb_checkpoints/
 __pycache__/
 results/*/qc/*_data/
+
+# Explicitly allow Task 01 QC reports and checksums
+!results/task_01/qc/
+!results/task_01/qc/**
+!logs/task_01/
+!logs/task_01/**
+!*.fastq.md5

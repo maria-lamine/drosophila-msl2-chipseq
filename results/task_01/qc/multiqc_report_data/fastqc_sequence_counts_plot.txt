@@ -1,0 +1,3 @@
+Sample	Unique Reads	Duplicate Reads
+SRR495368	47661377.0	11538665.0
+SRR495368.unmapped	16443735.0	465730.0

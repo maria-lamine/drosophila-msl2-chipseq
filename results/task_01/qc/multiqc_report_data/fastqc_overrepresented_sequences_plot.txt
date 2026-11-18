@@ -1,0 +1,3 @@
+Sample	Top overrepresented sequence	Sum of remaining overrepresented sequences
+SRR495368	0.17	0.0
+SRR495368.unmapped	0.59	0.7499999999999999
