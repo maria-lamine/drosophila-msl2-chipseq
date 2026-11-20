@@ -27,3 +27,4 @@ results/*/qc/*_data/
 !logs/task_01/
 !logs/task_01/**
 !*.fastq.md5
+references/dm6.fa.gz

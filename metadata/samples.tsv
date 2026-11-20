@@ -1,2 +1,2 @@
-sample_id	geo_series	geo_sample	sra_experiment	sra_run	assay	target	antibody	cell_line	organism	genotype	layout	read_length_bp	fastq_files	fastq_md5
-GSM929149	GSE37864	GSM929149	SRX146994	SRR495368	ChIP-seq	MSL2	rabbit polyclonal anti-MSL2 serum	S2	Drosophila melanogaster	wild-type	SINGLE	36	SRR495368.fastq.gz	c5ed574ae121cd8620d078ca5cc0f6bc
+sample_id	geo_series	geo_sample	sra_experiment	sra_run	assay	target	antibody	cell_line	organism	genotype	layout	read_length_bp	n_spots	instrument	fastq_files	fastq_md5
+GSM929149	GSE37864	GSM929149	SRX146994	SRR495368	ChIP-seq	MSL2	rabbit polyclonal anti-MSL2 serum	S2	Drosophila melanogaster	NA	SINGLE	36	59200042	Illumina Genome Analyzer II	SRR495368.fastq.gz	c5ed574ae121cd8620d078ca5cc0f6bc

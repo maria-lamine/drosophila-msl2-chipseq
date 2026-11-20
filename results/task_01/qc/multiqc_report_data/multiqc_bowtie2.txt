@@ -1,0 +1,2 @@
+Sample	total_reads	unpaired_total	unpaired_aligned_none	unpaired_aligned_one	unpaired_aligned_multi	overall_alignment_rate
+bowtie2.GSM929149	59200042	59200042	16909465	32585348	9705229	71.44

@@ -1,20 +1,17 @@
-# Drosophila melanogaster MSL2 ChIP-seq Analysis (`GSM929149` / `SRR495368`)
+# Drosophila S2 MSL2 ChIP-seq Pipeline (`GSM929149`)
 
-Reproducible bioinformatics pipeline and visual verification of MSL2 ChIP-seq in male *Drosophila melanogaster* S2 cells aligned to the UCSC `dm6` reference genome.
+Reproducible bioinformatics pipeline processing *Drosophila melanogaster* S2 male MSL2 ChIP-seq data (`GSE37864` / `GSM929149` / `SRR495368`, Straub et al. 2013) on the UCSC `dm6` reference genome.
 
 ## Repository Structure
-- `environment.yml`: Pinned Conda environment (`bowtie2`, `samtools`, `deeptools`, `fastqc`, `multiqc`, `sra-tools`).
-- `metadata/`: Sample provenance (`samples.tsv`) and reference genome checksums (`reference.tsv`).
-- `scripts/`: Modular bash scripts (`01_download.sh`, `02_fastq_qc.sh`, `03_align_and_filter.sh`, `04_coverage.sh`).
-- `logs/task_01/`: Full `samtools` alignment, filtering (`MAPQ >= 30`), and PCR duplication metrics.
-- `reports/task_01/`: Technical report (`report.md`) and IGV visual verification screenshots (`figures/`).
+- `metadata/`: Sample sheet (`samples.tsv`) and `dm6` reference manifest (`reference.tsv`).
+- `scripts/`: Modular shell scripts (`01_download.sh`–`04_coverage.sh`) and end-to-end runner (`run_all.sh`).
+- `logs/task_01/`: Software versions, MD5 verification logs, Bowtie2/bamCoverage execution logs, and `pyBigWig` signal maxima.
+- `results/task_01/qc/`: FastQC, SAMtools (`stats`, `flagstat`, `idxstats`, `markdup`), and MultiQC summary (`multiqc_report.html`).
+- `reports/task_01/`: Full analytical report (`report.md`) and fixed-scale (`[0 - 25]` CPM) IGV figures (`figures/`).
 
-## Reproduction Instructions
-1. Create and activate the Conda environment:
-   - `conda env create -f environment.yml`
-   - `conda activate msl2-chipseq`
-2. Run the pipeline scripts sequentially:
-   - `bash scripts/01_download.sh`
-   - `bash scripts/02_fastq_qc.sh`
-   - `bash scripts/03_align_and_filter.sh`
-   - `bash scripts/04_coverage.sh`
+## Quickstart
+```bash
+conda env create -f environment.yml
+conda activate msl2-chipseq
+bash scripts/run_all.sh
+```

@@ -1,0 +1,2 @@
+Sample	SE mapped uniquely	SE multimapped	SE not aligned
+bowtie2.GSM929149	32585348.0	9705229.0	16909465.0
