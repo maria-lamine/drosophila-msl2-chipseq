@@ -28,3 +28,5 @@ results/*/qc/*_data/
 !logs/task_01/**
 !*.fastq.md5
 references/dm6.fa.gz
+results/*/qc/multiqc_report_data/multiqc.parquet
+results/*/qc/multiqc_report_data/llms-full.txt
