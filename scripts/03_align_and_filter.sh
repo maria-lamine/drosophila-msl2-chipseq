@@ -41,6 +41,7 @@ rm -f data/tmp/markdup.tmp.bam
 
 # 7. Aggregate all FastQC + Bowtie2 + Samtools logs with MultiQC
 multiqc results/task_01/qc logs/task_01 \
+  --ignore '*multiqc_report_data*' \
   --outdir results/task_01/qc \
   --filename multiqc_report.html \
   --force

@@ -3,15 +3,8 @@ Samtools	stats	GSM929149	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01
 Samtools	stats	GSM929149.primary_q30	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/GSM929149.primary_q30.stats.txt
 Samtools	flagstat	GSM929149	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/GSM929149.sorted.flagstat.txt
 Samtools	flagstat	GSM929149.primary_q30	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/GSM929149.primary_q30.flagstat.txt
-Samtools	flagstat	flagstat	/mnt/c/Users/PC/drosophila-msl2-chipseq/logs/task_01/flagstat.txt
 Samtools	idxstats	GSM929149	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/GSM929149.sorted.idxstats.txt
 Samtools	idxstats	GSM929149.primary_q30	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/GSM929149.primary_q30.idxstats.txt
-Samtools	idxstats	idxstats	/mnt/c/Users/PC/drosophila-msl2-chipseq/logs/task_01/idxstats.txt
-Samtools	idxstats	samtools-idxstats-mapped-reads-plot_Normalised_Counts	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data/samtools-idxstats-mapped-reads-plot_Normalised_Counts.txt
-Samtools	idxstats	samtools-idxstats-mapped-reads-plot_Observed_over_Expected_Counts	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data/samtools-idxstats-mapped-reads-plot_Observed_over_Expected_Counts.txt
-Samtools	idxstats	samtools-idxstats-mapped-reads-plot_Raw_Counts	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data/samtools-idxstats-mapped-reads-plot_Raw_Counts.txt
+Bowtie 2 / HiSAT2	all_sections	bowtie2.GSM929149	/mnt/c/Users/PC/drosophila-msl2-chipseq/logs/task_01/bowtie2.GSM929149.log
 FastQC	all_sections	SRR495368	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/SRR495368_fastqc.zip
 FastQC	all_sections	SRR495368.unmapped	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/SRR495368.unmapped_fastqc.zip
-Snippy	snippy	multiqc	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data/multiqc.log
-Snippy	snippy	multiqc_sources	/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data/multiqc_sources.txt
-Bowtie 2 / HiSAT2	all_sections	bowtie2.GSM929149	/mnt/c/Users/PC/drosophila-msl2-chipseq/logs/task_01/bowtie2.GSM929149.log

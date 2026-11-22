@@ -1,32 +1,19 @@
-# Heavy raw and processed data
 data/
 references/
 results/*/bam/
 results/*/tracks/
-results/*/qc/**/*.zip
 *.fastq
 *.fastq.gz
 *.sra
 *.sralite
 *.bam
-*.bam.bai
+*.bai
 *.bw
 *.bigwig
 *.bt2
 *.fai
-
-# OS and IDE files
+results/*/qc/multiqc_report_data/multiqc.parquet
+results/*/qc/multiqc_report_data/llms-full.txt
 .DS_Store
 .ipynb_checkpoints/
 __pycache__/
-results/*/qc/*_data/
-
-# Explicitly allow Task 01 QC reports and checksums
-!results/task_01/qc/
-!results/task_01/qc/**
-!logs/task_01/
-!logs/task_01/**
-!*.fastq.md5
-references/dm6.fa.gz
-results/*/qc/multiqc_report_data/multiqc.parquet
-results/*/qc/multiqc_report_data/llms-full.txt

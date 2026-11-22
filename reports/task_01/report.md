@@ -8,7 +8,7 @@
 
 ## 2. Software & Reproducibility
 Orchestrated via `scripts/run_all.sh` in Conda environment `msl2-chipseq` (`environment.yml`, pinned `environment.lock.txt`). Versions recorded in `logs/task_01/software_versions.txt`:
-- `prefetch`: `3.1.1` | `fasterq-dump`: `3.1.1` | `fastqc`: `v0.12.1` | `multiqc`: `1.33` | `bowtie2`: `2.5.4` | `samtools`: `1.22.1` | `bamCoverage` (deepTools): `3.5.6`
+- `prefetch`: `3.4.1` | `fasterq-dump`: `3.4.1` | `fastqc`: `v0.13.0` | `multiqc`: `1.35` | `bowtie2`: `2.5.5` | `samtools`: `1.24` | `bamCoverage` (deepTools): `4.0.0`
 
 ## 3. Alignment, Filtering & Duplicate Retention Rationale
 Single-end 36 bp reads were aligned to `dm6` with `bowtie2 --very-sensitive -p 4` (`logs/task_01/bowtie2.GSM929149.log`):
@@ -67,18 +67,19 @@ All three loci were inspected in IGV on `dm6` with the left track-name panel vis
 ## 9. File Manifest & Checksums
 
 | File | Size | MD5 Checksum | Git Status |
-| :--- | ---: | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | `metadata/samples.tsv` | 394 B | `09ca27eec280b88bd060a12897bd6c6c` | Tracked |
 | `metadata/reference.tsv` | 388 B | `b078e7cc9a4de095e02dbae3885f90b5` | Tracked |
-| `logs/task_01/software_versions.txt` | 270 B | `65ea2e878bd07a47aa0a0052beec30da` | Tracked |
-| `logs/task_01/SRR495368.fastq.md5` | 53 B | `3adcde56f4ae259f035406943564e886` | Tracked |
+| `logs/task_01/software_versions.txt` | 258 B | `7c936fa3fb0ffa274c994b4eb8663251` | Tracked |
+| `logs/task_01/local_files_manifest.md` | 366 B | `72ec5a6336cc0f8d9392b5e200a33266` | Tracked |
+| `logs/task_01/SRR495368.fastq.md5` | 62 B | `4fbfee4f48d0b0bcc0fe9d8ad7123722` | Tracked |
 | `logs/task_01/dm6.fa.gz.md5check.txt` | 14 B | `ffba134b988f3d6a2f3a52d0a6082f58` | Tracked |
 | `logs/task_01/dm6.fa.md5` | 52 B | `e0697cf09c75da6b5f7d61542137a031` | Tracked |
 | `logs/task_01/bowtie2.GSM929149.log` | 223 B | `a2abe58352aaf9952fa631b5b8e8ff58` | Tracked |
-| `logs/task_01/bamCoverage.GSM929149.log` | 350 B | `616b392d7e26c92b1fef6d92260c6a18` | Tracked |
+| `logs/task_01/bamCoverage.GSM929149.log` | 0 B | `d41d8cd98f00b204e9800998ecf8427e` | Tracked |
 | `logs/task_01/GSM929149.bigwig_maxima.tsv` | 149 B | `1a6ab27c53ca7a1ebfd260e17887b638` | Tracked |
-| `results/task_01/qc/multiqc_report.html` | 2.4 MB | `3fd2a3f5c1fc36443cd40f37527445b2` | Tracked |
+| `results/task_01/qc/multiqc_report.html` | 2.4 MB | `ec56307249ac16bf22799f24aafccf8d` | Tracked |
 | `data/raw/SRR495368.fastq.gz` | 2.15 GB | `c5ed574ae121cd8620d078ca5cc0f6bc` | Ignored (raw FASTQ) |
-| `results/task_01/bam/GSM929149.dm6.sorted.bam` | 1.63 GB | `ed701acfb83fab8b61b5afad47e21e95` | Ignored (binary BAM) |
-| `results/task_01/bam/GSM929149.dm6.primary_q30.bam` | 1.05 GB | `a513e6e8099dfc6974b9d43c1d355f63` | Ignored (binary BAM) |
+| `results/task_01/bam/GSM929149.dm6.sorted.bam` | 1.63 GB | `1f7ea457131342f73606dc3bbedf9ff1` | Ignored (binary BAM) |
+| `results/task_01/bam/GSM929149.dm6.primary_q30.bam` | 1.05 GB | `5a8444fa4e7e67d56c54f14a8b412b20` | Ignored (binary BAM) |
 | `results/task_01/tracks/GSM929149.dm6.CPM.bw` | 61.0 MB | `6bc430c3979e6f8ab19b6f06385ae04d` | Ignored (binary bigWig) |

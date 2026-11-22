@@ -1,8 +1,0 @@
-Chromosomes to ignore for normalization: []
-Sample: results/task_01/bam/GSM929149.dm6.primary_q30.bam is-paired: false
-extend reads option on, overriding readlen from 36 to 150
-Read stats with ignorechr: []
-Mapped: 32530464 Unmapped: 0
-Readlen: 150, Fraglen: 0
-Scale factor: 0.030740416
-Writing output to: results/task_01/tracks/GSM929149.dm6.CPM.bw
