@@ -49,13 +49,15 @@ A 10 bp binned, 150 bp read-extended, CPM-normalized bigWig track (`results/task
 | `RpL32` | `chr3R:30,035,000-30,055,000` | **4.73** | 2.274 | Highly expressed autosomal comparison gene |
 
 ## 7. IGV Visual Inspection (Fixed Scale `[0 - 25]` CPM)
-All three loci were inspected in IGV on `dm6` with the left track-name panel visible, a fixed y-axis scale of `[0 - 25]` CPM on `GSM929149.dm6.CPM.bw`, and `dm6 RefSeq Genes` displayed below:
+All three loci were inspected in IGV on `dm6` with the left track-name panel visible, a fixed y-axis scale of `[0 - 25]` CPM on `GSM929149.dm6.CPM.bw`, and the `Refseq Curated` gene track displayed below:
 
 1. **X-Linked High-Affinity Entry Site — `roX1` (`chrX:3,850,000-3,870,000`):** ![roX1 CES](figures/fig1_roX1_CES.png)
+   *Figure 1. IGV-Web, `dm6`, `chrX:3,850,000-3,870,000`; tracks: `GSM929149.dm6.primary_q30.bam`, `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
    A sharp local maximum (`228.22` CPM, clipping above the `[0 - 25]` display range) lies within `roX1`, consistent with strong MSL2 recruitment to the `roX1` Chromatin Entry Site.
 2. **X-Linked Active Gene — `Act5C` (`chrX:5,893,000-5,913,000`):** ![Act5C X-linked gene](figures/fig2_Act5C_X_gene.png)
    A focal maximum (`30.37` CPM) appears near the 3' ends of `CG12236` and `Shmt` adjacent to `Act5C`, consistent with the reported association of the MSL complex with active X-linked genes; this single ChIP track alone cannot establish enrichment without an input control.
 3. **Autosomal Comparison Region — `RpL32` (`chr3R:30,035,000-30,055,000`):** ![RpL32 autosomal comparison](figures/fig3_RpL32_autosomal_control.png)
+   *Figure 3. IGV-Web, `dm6`, `chr3R:30,035,000-30,055,000`; tracks: `GSM929149.dm6.primary_q30.bam`, `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
    Signal stays well below the `[0 - 25]` CPM display ceiling (`max = 4.73` CPM) with no focal peak. The window mean (`2.27` CPM) is about twice the expected genome-wide mean (`~1.1` CPM) and similar to the `Act5C` window (`2.01` CPM); this single autosomal view cannot address X-chromosome specificity.
 
 ## 8. Limitations
@@ -69,14 +71,16 @@ All three loci were inspected in IGV on `dm6` with the left track-name panel vis
 | File | Size | MD5 Checksum | Git Status |
 | :--- | :--- | :--- | :--- |
 | `metadata/samples.tsv` | 394 B | `09ca27eec280b88bd060a12897bd6c6c` | Tracked |
-| `metadata/reference.tsv` | 388 B | `b078e7cc9a4de095e02dbae3885f90b5` | Tracked |
+| `metadata/reference.tsv` | 388 B | `6b65f40106fd53d5a597c317dd5ce17e` | Tracked |
 | `logs/task_01/software_versions.txt` | 258 B | `7c936fa3fb0ffa274c994b4eb8663251` | Tracked |
 | `logs/task_01/local_files_manifest.md` | 366 B | `72ec5a6336cc0f8d9392b5e200a33266` | Tracked |
 | `logs/task_01/SRR495368.fastq.md5` | 62 B | `4fbfee4f48d0b0bcc0fe9d8ad7123722` | Tracked |
+| `logs/task_01/fastq_check.SRR495368.tsv` | 31 B | `18125ad1fa15b0fcffb530a6db74560f` | Tracked |
 | `logs/task_01/dm6.fa.gz.md5check.txt` | 14 B | `ffba134b988f3d6a2f3a52d0a6082f58` | Tracked |
 | `logs/task_01/dm6.fa.md5` | 52 B | `e0697cf09c75da6b5f7d61542137a031` | Tracked |
+| `logs/task_01/bowtie2_index.dm6.n_sequences.txt` | 5 B | `dc6c12e7ae26abcee8a878b8b0f74141` | Tracked |
 | `logs/task_01/bowtie2.GSM929149.log` | 223 B | `a2abe58352aaf9952fa631b5b8e8ff58` | Tracked |
-| `logs/task_01/bamCoverage.GSM929149.log` | 0 B | `d41d8cd98f00b204e9800998ecf8427e` | Tracked |
+| `logs/task_01/bamCoverage.GSM929149.log` | 350 B | `616b392d7e26c92b1fef6d92260c6a18` | Tracked |
 | `logs/task_01/GSM929149.bigwig_maxima.tsv` | 149 B | `1a6ab27c53ca7a1ebfd260e17887b638` | Tracked |
 | `results/task_01/qc/multiqc_report.html` | 2.4 MB | `ec56307249ac16bf22799f24aafccf8d` | Tracked |
 | `data/raw/SRR495368.fastq.gz` | 2.15 GB | `c5ed574ae121cd8620d078ca5cc0f6bc` | Ignored (raw FASTQ) |

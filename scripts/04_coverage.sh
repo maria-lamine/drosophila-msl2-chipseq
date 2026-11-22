@@ -11,6 +11,7 @@ bamCoverage \
   --normalizeUsing CPM \
   --extendReads 150 \
   --numberOfProcessors 4 \
+  --verbose \
   2>&1 | tee logs/task_01/bamCoverage.GSM929149.log
 
 python3 - results/task_01/tracks/GSM929149.dm6.CPM.bw <<'PY' | tee logs/task_01/GSM929149.bigwig_maxima.tsv
