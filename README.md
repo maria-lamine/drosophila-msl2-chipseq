@@ -5,7 +5,8 @@ Reproducible bioinformatics pipeline processing *Drosophila melanogaster* S2 mal
 ## Repository Structure
 - `metadata/`: Sample sheet (`samples.tsv`) and `dm6` reference manifest (`reference.tsv`).
 - `scripts/`: Modular shell scripts (`01_download.sh`–`04_coverage.sh`) and end-to-end runner (`run_all.sh`).
-- `logs/task_01/`: Software versions, MD5 verification logs, Bowtie2/bamCoverage execution logs, and `pyBigWig` signal maxima.
+- `logs/task_01/`: Software versions, read-count/length check (`fastq_check.SRR495368.tsv`), MD5 verification logs, Bowtie2 index sequence count (`bowtie2_index.dm6.n_sequences.txt`), Bowtie2/bamCoverage/FastQC logs, `pyBigWig` signal maxima, and the manifest of local git-ignored files (`local_files_manifest.md`).
+- The SRA accession and the expected read count and length are read from `metadata/samples.tsv`.
 - `results/task_01/qc/`: FastQC, SAMtools (`stats`, `flagstat`, `idxstats`, `markdup`), and MultiQC summary (`multiqc_report.html`).
 - `reports/task_01/`: Full analytical report (`report.md`) and fixed-scale (`[0 - 25]` CPM) IGV figures (`figures/`).
 
