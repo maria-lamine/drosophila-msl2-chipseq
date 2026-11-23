@@ -3,46 +3,44 @@
 ## 1. Biological Context & Experimental Design
 In *Drosophila melanogaster*, sex-chromosome dosage compensation equalizes X-linked gene expression between XY males and XX females by hypertranscribing the single male X chromosome approximately twofold. This transcriptional upregulation is mediated by the Male-Specific Lethal (MSL) ribonucleoprotein complex, in which **MSL2** serves as the essential male-specific DNA-binding core subunit that nucleates complex assembly at high-affinity **Chromatin Entry Sites (CES)** (such as the X-linked non-coding RNA locus *roX1*) and spreads *in cis* across active X-chromosomal genes (such as *Act5C*), while sparing autosomes (such as *RpL32*).
 
-Dataset **`GSE37864` / `GSM929149`** (Straub *et al.*, 2013, *Genome Research* 23:473–485) profiles endogenous MSL2 occupancy via ChIP-seq in male-derived *Drosophila* **S2** cells using a polyclonal anti-MSL2 antibody. Examining a single biological replicate (`msl2_2`, run `SRR495368`) on the UCSC `dm6` assembly establishes baseline signal-to-noise behavior, alignment specificity, and expected X-versus-autosome enrichment patterns before multi-replicate peak calling and input normalization.
+Dataset **`GSE37864` / `GSM929149`** (Straub *et al.*, 2013, *Genome Research* 23:473–485) profiles endogenous MSL2 occupancy via ChIP-seq in male-derived *Drosophila* **S2** cells using a polyclonal anti-MSL2 antibody. Examining a single biological replicate (`msl2_2`, run `SRR495368`) on the UCSC `dm6` assembly establishes baseline signal-to-noise behavior, alignment behavior, and expected X-versus-autosome patterns before multi-replicate peak calling and input normalization.
 
 ## 2. Dataset & Reference Provenance
 - **Study / Sample:** GEO `GSE37864` / `GSM929149` (SRA `SRX146994` / `SRR495368`, biological replicate `msl2_2`), MSL2 ChIP-seq in *Drosophila melanogaster* male S2 cells (rabbit polyclonal anti-MSL2 serum; Illumina Genome Analyzer II, single-end 36 bp, 59,200,042 spots).
 - **Primary Reference:** Straub T, Zabel A, Gilfillan GD, Feller C, Becker PB (2013), *Genome Research* 23:473–485 (`GSE37864`, doi:10.1101/gr.146407.112).
 - **SRA Archive & FASTQ Verification:** Local SRA archive `data/raw/SRR495368/SRR495368.sra` verified consistent via `vdb-validate` (`logs/task_01/vdb_validate.SRR495368.log`). Deterministic reconversion via `fasterq-dump` (`logs/task_01/fasterq_dump.SRR495368.log`) matched the uncompressed MD5 of `data/raw/SRR495368.fastq.gz` (`ca17f2bdfb248389cf0aaf9bb455550d`, `logs/task_01/fastq_reconversion_check.txt`); compressed archive MD5 `c5ed574ae121cd8620d078ca5cc0f6bc` (`logs/task_01/SRR495368.fastq.md5`), 59,200,042 reads, uniform 36 bp read length (`logs/task_01/fastq_check.SRR495368.tsv`).
-- **Reference Genome (`dm6`):** UCSC `dm6.fa.gz`, archive MD5 `4a6777324403eff92c3650c30af30120` verified against UCSC `md5sum.txt` (`dm6.fa.gz: OK` in `logs/task_01/dm6.fa.gz.md5check.txt`); uncompressed `dm6.fa` MD5 `5aadf7ccab5a6b674e76516bf75eaa89` (`logs/task_01/dm6.fa.md5`).
+- **Reference Genome (`dm6`):** UCSC `dm6.fa.gz`, archive MD5 `4a5777324403eff92c3650c30af30120` verified against UCSC `md5sum.txt` (`dm6.fa.gz: OK` in `logs/task_01/dm6.fa.gz.md5check.txt`); uncompressed `dm6.fa` MD5 `5aadf7ccab5a6b674e76516bf75eaa09` (`logs/task_01/dm6.fa.md5`).
 
 ## 3. Software & Reproducibility
 Orchestrated dynamically from `metadata/samples.tsv` via `scripts/run_all.sh` (`01_download.sh`–`04_coverage.sh`) in Conda environment `msl2-chipseq` (`environment.yml`, pinned `environment.lock.txt`). Versions recorded in `logs/task_01/software_versions.txt`:
 - `prefetch`: `3.4.1` | `fasterq-dump`: `3.4.1` | `fastqc`: `v0.13.0` | `multiqc`: `1.35` | `bowtie2`: `2.5.5` | `samtools`: `1.24` | `bamCoverage` (deepTools): `4.0.0`
 
 ## 4. Alignment, Filtering & Duplicate Retention Rationale
-Single-end 36 bp reads were aligned to `dm6` with `bowtie2 -p 4` (`logs/task_01/bowtie2.GSM929149.log`). Default end-to-end (`--sensitive`) alignment was chosen rather than local soft-clipping because Illumina GAII 36 bp ChIP-seq reads lack adapters at 3' ends and short 36-mers benefit from full-length seed-and-extend scoring to minimize spurious partial hits:
-- **Total input reads:** 59,200,042 (100.00%)
-- **Aligned 0 times (unaligned):** 16,909,465 (28.56%)
-- **Aligned exactly 1 time:** 32,585,348 (55.04%)
-- **Aligned >1 times:** 9,705,229 (16.39%)
-- **Overall alignment rate:** **71.44%** (42,290,577 aligned reads)
+Single-end 36 bp reads were aligned to `dm6` with `bowtie2 -p 4` (`logs/task_01/bowtie2.GSM929149.log`). Default end-to-end (`--sensitive`) alignment was chosen rather than local soft-clipping because Illumina GAII 36 bp ChIP-seq reads lack adapters at 3' ends and short 36-mers benefit from full-length seed-and-extend scoring to minimize spurious partial hits. Without `-k`, Bowtie2 reports one alignment per read; when several genomic locations score equally, one is chosen at random and assigned `MAPQ = 0` or `1`, so subsequent `MAPQ >= 30` filtering removes those ambiguous alignments:
+- **Total raw input reads:** 59,200,042 (100.00% of raw)
+- **Aligned 0 times (unaligned):** 16,909,465 (28.56% of raw)
+- **Aligned >= 1 time (overall mapped):** 42,290,577 (71.44% of raw; 32,585,348 [55.04% of raw] aligned once and 9,705,229 [16.39% of raw] aligned >1 time)
 
-Alignments were coordinate-sorted (`GSM929149.dm6.sorted.bam`) and filtered with `samtools view -F 0x904 -q 30` (`GSM929149.dm6.primary_q30.bam`), retaining **32,530,464** primary high-confidence reads (54.95% of total input reads; verified via `samtools quickcheck` in `logs/task_01/bam_integrity.txt`). Applying `MAPQ >= 30` removes the 16.39% multi-mapping fraction arising from repetitive elements and paralogous gene families on 36 bp reads so pileups reflect uniquely mappable chromatin loci.
+Alignments were coordinate-sorted (`GSM929149.dm6.sorted.bam`) and filtered with `samtools view -F 0x904 -q 30` (`GSM929149.dm6.primary_q30.bam`), retaining **32,530,464** primary reads with `MAPQ >= 30` (**54.95%** of raw input reads; **76.92%** of mapped reads; verified via `samtools quickcheck` in `logs/task_01/bam_integrity.txt`). The filter removed **9,760,113** mapped reads (16.49% of raw input), mostly reads with several equally good locations; it reduces but does not eliminate mapping ambiguity, and does not prove that each retained read has a unique genomic origin.
 
-**Duplication Summary:** Duplicate reads were quantified on a temporary copy of the filtered BAM using `samtools markdup -s` (`results/task_01/qc/GSM929149.dm6.primary_q30.markdup_stats.txt`), identifying **8,281,791** duplicate single-end reads (**25.46%** of the 32,530,464 filtered reads). Per standard ChIP-seq practice for single-end 36 bp libraries—where authentic focal binding at high-affinity sites like *roX1* produces identical 5' read starts—duplicates were **retained** (`GSM929149.dm6.primary_q30.bam` has no duplicate flags set) so narrow CES summits are not artificially truncated.
+**Duplication Summary:** FastQC estimates **19.49%** duplicated sequences in the raw reads (sequence-based; 80.51% remaining after deduplication, module status `PASS`). On the filtered primary BAM, `samtools markdup -s` (`results/task_01/qc/GSM929149.dm6.primary_q30.markdup_stats.txt`) identified **8,281,791** position-based duplicate single-end reads (**25.46%** of the 32,530,464 retained reads). As required by the task for this initial coverage track—and because authentic focal binding at high-affinity sites like *roX1* produces identical 5' read starts on 36 bp libraries—duplicates were **retained** (`GSM929149.dm6.primary_q30.bam` has no duplicate flags set) so narrow CES summits are not truncated.
 
 ## 5. FastQC, MultiQC & Unmapped Read Investigation (`28.56%`)
-FastQC inspection of raw reads (`results/task_01/qc/SRR495368_fastqc.html`), unmapped reads (`results/task_01/qc/SRR495368.unmapped_fastqc.html`), and the aggregated MultiQC report (`results/task_01/qc/multiqc_report.html`) summarizes library quality:
+FastQC inspection of raw reads (`results/task_01/qc/SRR495368_fastqc.html`), unmapped reads (`results/task_01/qc/SRR495368.unmapped_fastqc.html`), and the aggregated MultiQC report (`results/task_01/qc/multiqc_report.html`) summarizes read counts across all four processing stages:
 
-| QC Metric | Value | MultiQC Module | Interpretation |
+| Processing Stage / QC Metric | Read Count / Value | Denominator / Reference | Interpretation |
 | :--- | :--- | :--- | :--- |
-| Total Raw Sequences (`SRR495368`) | 59,200,042 (36 bp) | FastQC | Matches SRA metadata (`n_spots = 59,200,042`) exactly |
-| Raw GC Content / Adapter Content | 43% GC / <0.03% adapter | FastQC | Normal *Drosophila* genomic GC; negligible adapter carryover |
-| Low-Quality Cycle-1 Reads (`Q = 2`) | ~30% of raw reads | FastQC | Illumina GAII chastity-failed reads (`#` quality across all 36 bp) |
-| Unmapped Reads (`16,909,465`, 28.56%) | Median `Q = 2` + 100,423 all-`N` | Bowtie2 / FastQC | Low-confidence base calls across full read; trimming cannot rescue |
-| Filtered Primary Reads (`MAPQ >= 30`) | 32,530,464 (54.95%) | SAMtools | Clean uniquely mapped fraction retained for coverage tracks |
-| Optical/PCR Duplicate Rate | 25.46% (8,281,791 reads) | SAMtools `markdup` | Expected for 36 bp single-end ChIP-seq; retained to preserve CES peaks |
-
-Because the 28.56% unaligned fraction consists overwhelmingly of reads assigned Phred quality 2 across all 36 cycles (plus 100,423 all-`N` reads) rather than 3' adapter contamination, quality trimming would discard those reads rather than recover additional alignments.
+| **1. Raw sequences (`SRR495368`)** | 59,200,042 (100.00%, 36 bp) | Raw SRA spots (`59,200,042`) | Matches SRA metadata (`n_spots = 59,200,042`) exactly |
+| **2. Reads after trimming** | 59,200,042 (100.00% of raw) | Raw input reads (`59,200,042`) | No trimming applied: Q2 reads span all 36 bp and cannot be rescued |
+| **3. Mapped reads (`Bowtie2`, >= 1 hit)** | 42,290,577 (71.44% of raw) | Raw input reads (`59,200,042`) | 55.04% aligned once; 16.39% aligned >1 time; 28.56% unaligned |
+| **4. Retained primary reads (`MAPQ >= 30`)** | 32,530,464 (54.95% of raw; 76.92% of mapped) | Raw (`59,200,042`) / Mapped (`42,290,577`) | High-confidence primary alignments retained for coverage (MAPQ is not proof of uniqueness) |
+| Raw GC Content / Adapter Content | 48% GC / <0.03% adapter | Raw input reads (`59,200,042`) | FastQC `%GC = 48`; negligible adapter carryover |
+| Quality-2 (`Q = 2`) Reads from Cycle 1 | ~30% of raw reads | Raw input reads (`59,200,042`) | Reads flagged with the Illumina quality-2 indicator (read-segment quality control) from cycle 1 (`#` across all 36 bp) |
+| Unmapped Reads (`16,909,465`, 28.56% of raw) | Median `Q = 2` + 100,423 all-`N` | Unaligned reads (`16,909,465`) | Low-confidence base calls across full read; trimming cannot rescue |
+| Duplication (FastQC vs. `samtools markdup`) | 19.49% raw / 25.46% retained | Raw (`59,200,042`) / Retained (`32,530,464`) | Sequence-based (FastQC) vs. position-based (`markdup`); retained per task specification |
 
 ## 6. Chromosome-Level Alignment Breakdown (`MAPQ >= 30`)
-From `results/task_01/qc/GSM929149.primary_q30.idxstats.txt` (total filtered primary reads = **32,530,464**):
+From `results/task_01/qc/GSM929149.dm6.primary_q30.idxstats.txt` (total filtered primary reads = **32,530,464**):
 
 | Chromosome | Length (bp) | Filtered Reads (`MAPQ >= 30`) | Density (reads/Mb) | Density / Major Autosomes |
 | :--- | ---: | ---: | ---: | ---: |
@@ -66,39 +64,44 @@ A 10 bp binned, 150 bp read-extended, CPM-normalized bigWig track (`results/task
 | `Act5C` | `chrX:5,893,000-5,913,000` | **30.37** | 2.011 | Highly expressed X-linked housekeeping gene |
 | `RpL32` | `chr3R:30,035,000-30,055,000` | **4.73** | 2.274 | Highly expressed autosomal comparison gene |
 
-## 8. IGV Visual Inspection (Fixed Scale `[0 - 25]` CPM)
-All three loci were inspected in IGV on `dm6` with assembly/coordinate banners, track labels visible, a fixed y-axis scale of `[0 - 25]` CPM on `GSM929149.dm6.CPM.bw`, and the `Refseq Curated` gene track displayed below:
+## 8. IGV Visual Inspection (Fixed bigWig Scale `[0 - 25]` CPM)
+All three loci were inspected in IGV on `dm6` with assembly/coordinate banners, track labels visible, a fixed y-axis scale of `[0 - 25]` CPM on `GSM929149.dm6.CPM.bw`, and the `Refseq Curated` gene track displayed below. Note that the raw BAM coverage histograms are autoscaled independently across panels (maxima 2,179, 437, and 49 reads, respectively), so only the fixed `[0 - 25]` CPM bigWig track is directly comparable across figures:
 
 1. **X-Linked High-Affinity Entry Site — `roX1` (`chrX:3,850,000-3,870,000`):** ![roX1 CES](figures/fig1_roX1_CES.png)
-   *Figure 1. IGV-Web, `dm6`, `chrX:3,850,000-3,870,000`; tracks: `GSM929149.dm6.primary_q30.bam`, `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
+   *Figure 1. IGV-Web, `dm6`, `chrX:3,850,000-3,870,000`; tracks: `GSM929149.dm6.primary_q30.bam` (autoscaled, max 2,179), `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
    A sharp local maximum (`228.22` CPM, clipping above the `[0 - 25]` display range) lies within `roX1`, consistent with strong MSL2 recruitment to the `roX1` Chromatin Entry Site.
 2. **X-Linked Active Gene — `Act5C` (`chrX:5,893,000-5,913,000`):** ![Act5C X-linked gene](figures/fig2_Act5C_X_gene.png)
-   *Figure 2. IGV-Web, `dm6`, `chrX:5,893,000-5,913,000`; tracks: `GSM929149.dm6.primary_q30.bam`, `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
+   *Figure 2. IGV-Web, `dm6`, `chrX:5,893,000-5,913,000`; tracks: `GSM929149.dm6.primary_q30.bam` (autoscaled, max 437), `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
    A focal maximum (`30.37` CPM) appears in the 3' region of `CG12236`, about 0.8 kb from `Shmt` (which starts 67 bp beyond the right edge of the window) and adjacent to `Act5C`, consistent with the reported association of the MSL complex with active X-linked genes; this single ChIP track alone cannot establish enrichment without an input control.
 3. **Autosomal Comparison Region — `RpL32` (`chr3R:30,035,000-30,055,000`):** ![RpL32 autosomal comparison](figures/fig3_RpL32_autosomal_control.png)
-   *Figure 3. IGV-Web, `dm6`, `chr3R:30,035,000-30,055,000`; tracks: `GSM929149.dm6.primary_q30.bam`, `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
+   *Figure 3. IGV-Web, `dm6`, `chr3R:30,035,000-30,055,000`; tracks: `GSM929149.dm6.primary_q30.bam` (autoscaled, max 49), `GSM929149.dm6.CPM.bw` (`[0 - 25]` CPM), `Refseq Curated`.*
    Signal stays well below the `[0 - 25]` CPM display ceiling (`max = 4.73` CPM) with no focal peak. The window mean (`2.27` CPM) is about twice the expected genome-wide mean (`~1.1` CPM) and similar to the `Act5C` window (`2.01` CPM); this single autosomal view cannot address X-chromosome specificity.
 
-**Suspicious Features & IGV Visualization Artifacts:**
-- **Signal clipping at `roX1`:** Fixing the y-axis at `[0 - 25]` CPM intentionally clips the `roX1` summit (`228.22` CPM, ~9-fold above the ceiling) so moderate enrichment at `Act5C` (`30.37` CPM) remains legible across panels; the true summit height is preserved in `GSM929149.dm6.CPM.bw` and `logs/task_01/GSM929149.bigwig_maxima.tsv`.
-- **Window-boundary gene truncation at `Act5C`:** `Shmt` begins 67 bp past the right coordinate boundary (`chrX:5,913,000`), making the `30.37` CPM peak near `CG12236` appear isolated unless adjacent gene annotations are considered.
-- **Broad open-chromatin background at `RpL32`:** Although lacking a focal summit, `RpL32` shows diffuse coverage (`mean = 2.27` CPM) typical of sonication-sensitive active autosomal promoters in unnormalized ChIP tracks.
+**Suspicious Features & IGV Visualization Artifacts (Hypotheses to Verify):**
+- **Recurrent mismatch columns across many reads (Figures 1–3):** Vertical colored base-mismatch stripes appear consistently across stacked reads in all three panels, likely representing S2-cell-specific SNVs/indels relative to the `dm6` reference genome or systematic sequencing errors.
+- **Local coverage gaps (`~3,858 kb` in Figure 1; `~30,043.5 kb` in Figure 3):** Sharp drops to zero coverage occur near the annotated transposable element `X{}1937` in Figure 1 and around `30,043.5 kb` in Figure 3, likely reflecting repetitive intervals excluded by the `MAPQ >= 30` filter or local deletions in S2 cells.
+- **Secondary peak near the `CG12236` transcription start (`~5,908 kb`, Figure 2):** A secondary enrichment bump near the 5' end of `CG12236` may represent a promoter-associated open-chromatin artefact and should be checked against an input control.
+- **Display-window artifacts:** Fixing the bigWig y-axis at `[0 - 25]` CPM intentionally clips the `roX1` summit (`228.22` CPM) so moderate signal at `Act5C` (`30.37` CPM) remains legible, while `Shmt` begins 67 bp past the right edge of Figure 2 (`chrX:5,913,000`).
 
-## 9. Limitations, Problems Encountered & Next Logical Checks
+## 9. Limitations, Problems Encountered, Open Questions & Next Checks
 **Methodological Limitations:**
-- **Single biological replicate:** Only one of the three MSL2 biological replicates in `GSE37864` (`msl2_2`, run `SRR495368`) was processed here, so inter-replicate reproducibility cannot be assessed.
-- **No input control & polyclonal serum:** Because no matched IgG/input control was processed in Task 01 and a crude polyclonal anti-MSL2 serum was used, absolute fold-enrichment cannot be quantified and minor promoter-associated false positives cannot be excluded.
-- **Short single-end reads (`36 bp`) & read extension:** `28.56%` of reads did not align, predominantly reads of uniformly low Phred quality (`Q = 2`), and multi-mapping reads were excluded via `MAPQ >= 30`; the 150 bp extension only approximates ChIP fragment length for visualization.
-- **Retained duplicates (`25.46%`):** PCR/optical duplicates were kept to avoid truncating sharp CES summits, meaning local peak maxima may include PCR amplification duplicates.
+- **Single biological replicate & no input control:** Only replicate `msl2_2` (`GSM929149` / `SRR495368`) was processed here, and no matched IgG/input control was included in Task 01 (the public `GSE37864` series summary lists ChIP experiments for MSL1, MSL2, MSL3, MOF, MLE, H4K16ac, and RNA Pol II with 1–3 biological replicates per experiment without listing an input sample). Without an input control, absolute fold-enrichment cannot be quantified and promoter-associated false positives from the polyclonal serum cannot be excluded.
+- **Short single-end reads (`36 bp`) & residual mapping ambiguity:** `28.56%` of reads did not align (predominantly quality-2 reads across all 36 bp). While `MAPQ >= 30` removes most multi-mapping alignments, it reduces rather than eliminates ambiguity in repetitive regions, and the 150 bp extension only approximates ChIP fragment length for visualization.
+- **Retained duplicates (`25.46%`):** PCR/optical duplicates were kept as required for this initial track to preserve sharp CES summits, meaning local peak maxima may include PCR amplification duplicates.
 
 **Problems Encountered During Analysis:**
-- **NCBI SRA HTTPS download stalls:** Direct `prefetch` HTTPS transfers stalled mid-stream on WSL2; resolved by retrieving the canonical SRA archive (`SRR495368.sra`) via NCBI's AWS S3 mirror with `curl -C - --retry 10`, verifying archive integrity with `vdb-validate`, and confirming bit-identical `fasterq-dump` reconversion (`ca17f2bdfb248389cf0aaf9bb455550d`).
+- **NCBI SRA HTTPS download stalls:** Direct `prefetch` transfers stalled mid-stream on WSL2; resolved by retrieving the canonical SRA archive (`SRR495368.sra`) via NCBI's AWS S3 mirror with `curl -C - --retry 10` (`logs/task_01/download.SRR495368.log`), verifying archive integrity with `vdb-validate`, and confirming bit-identical `fasterq-dump` reconversion (`ca17f2bdfb248389cf0aaf9bb455550d`).
 - **Missing ImageMagick binary for figure annotation:** `convert`/`magick` was unavailable in the base WSL image; resolved deterministically using Python `Pillow` (`PIL`) to stamp assembly (`dm6 (UCSC)`), genomic coordinates, and scale (`0-25 CPM`) banners onto all three IGV figures.
 
+**Open Questions:**
+1. To what extent does the observed `chrX` / major-autosome read-density ratio (`0.75`) reflect genuine MSL2 enrichment versus S2 aneuploid copy-number variation (`~2X;4A`) or chromosomal mappability differences?
+2. Is the 150 bp read-extension parameter optimal for this GAII ChIP library's true fragment-size distribution (as estimated by strand cross-correlation)?
+3. What proportion of the `25.46%` position-based duplicates arises from genuine high-occupancy MSL2 binding at CES versus PCR over-amplification?
+
 **Next Logical Checks:**
-1. **Input / Mock-IP Normalization:** Process the matched S2 input/control sample from `GSE37864` and compute `log2(ChIP / Input)` tracks (`bamCompare`) to separate true MSL2 binding from S2 copy-number variation and open-chromatin sonication bias.
-2. **Replicate Concordance:** Process the remaining two MSL2 biological replicates (`GSM929148` and `GSM929150`) and evaluate genome-wide correlation (`multiBigwigSummary` / `plotCorrelation`) and irreproducible discovery rate (IDR).
-3. **Peak Calling & Motif Discovery:** Call narrow peaks with `macs2 callpeak --nomodel --extsize 150 -g dm` against the matched input control, quantify X-chromosome peak enrichment, and run `MEME`/`FIMO` to verify enrichment of the GA-rich MSL Recognition Element (MRE) motif beneath summits.
+1. **Input Control Normalization:** Process the input control provided for the next task and compute `log2(ChIP / Input)` tracks (`bamCompare`) to separate true MSL2 binding from S2 copy-number variation and open-chromatin sonication bias.
+2. **Replicate Concordance:** Process the remaining MSL2 biological replicates from `GSE37864` and evaluate genome-wide correlation (`multiBigwigSummary` / `plotCorrelation`) and irreproducible discovery rate (IDR).
+3. **Peak Calling & Motif Discovery:** Call narrow peaks with `macs2 callpeak --nomodel --extsize 150 -g dm` against the input control, quantify X-chromosome peak enrichment, and run `MEME`/`FIMO` to verify enrichment of the GA-rich MSL Recognition Element (MRE) motif beneath summits.
 
 ## 10. File Manifest & Checksums
 | File | Size | MD5 Checksum | Git Status |
@@ -106,6 +109,7 @@ All three loci were inspected in IGV on `dm6` with assembly/coordinate banners, 
 | `metadata/samples.tsv` | 590 B | `bdb2a74d50be019ce6af75bb9daeee76` | Tracked |
 | `metadata/reference.tsv` | 388 B | `6b65f40106fd53d5a597c317dd5ce17e` | Tracked |
 | `logs/task_01/software_versions.txt` | 258 B | `7c936fa3fb0ffa274c994b4eb8663251` | Tracked |
+| `logs/task_01/download.SRR495368.log` | 359 B | `d8784e0fc6ed6b42aee0bb7be8aa362e` | Tracked |
 | `logs/task_01/vdb_validate.SRR495368.log` | 500 B | `51c4decc148a0621d7f5641c726fb44d` | Tracked |
 | `logs/task_01/fastq_reconversion_check.txt` | 92 B | `0e709715a4cdeec1a4be077d0b59fbb4` | Tracked |
 | `logs/task_01/SRR495368.fastq.md5` | 62 B | `4fbfee4f48d0b0bcc0fe9d8ad7123722` | Tracked |
@@ -114,7 +118,8 @@ All three loci were inspected in IGV on `dm6` with assembly/coordinate banners, 
 | `logs/task_01/bowtie2.GSM929149.log` | 223 B | `a2abe58352aaf9952fa631b5b8e8ff58` | Tracked |
 | `logs/task_01/bamCoverage.GSM929149.log` | 350 B | `616b392d7e26c92b1fef6d92260c6a18` | Tracked |
 | `logs/task_01/GSM929149.bigwig_maxima.tsv` | 149 B | `1a6ab27c53ca7a1ebfd260e17887b638` | Tracked |
-| `results/task_01/qc/multiqc_report.html` | 2.4 MB | `c1636761fd016ceda35296cbfa7975a8` | Tracked |
+| `logs/task_01/local_files_manifest.md` | 551 B | `c4faa3cdd05091054dc3c57bea5344e3` | Tracked |
+| `results/task_01/qc/multiqc_report.html` | 2.4 MB | `108446df7626244351258d4fc77db6f7` | Tracked |
 | `reports/task_01/figures/fig1_roX1_CES.png` | 249.3 KB | `080abba1ce99fb8d6fabf538733fd375` | Tracked |
 | `reports/task_01/figures/fig2_Act5C_X_gene.png` | 256.4 KB | `6e850899b804d049b43960c480a474e5` | Tracked |
 | `reports/task_01/figures/fig3_RpL32_autosomal_control.png` | 284.3 KB | `ed7a08cff9d5fac28496ca4e3ae349be` | Tracked |

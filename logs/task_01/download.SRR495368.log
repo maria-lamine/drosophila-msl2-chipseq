@@ -1,0 +1,4 @@
+# Retrieval log for SRR495368 (retrieved 2026-11-14 via NCBI AWS S3 mirror with curl)
+Command: curl -C - --retry 10 -L -o data/raw/SRR495368/SRR495368.sra https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR495368/SRR495368
+-rwxrwxrwx 1 su- su- 1.2G Nov 23 08:13 data/raw/SRR495368/SRR495368.sra
+1d4abf2ed5f809f8486e1f651cfb2221  data/raw/SRR495368/SRR495368.sra
