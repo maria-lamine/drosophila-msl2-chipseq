@@ -13,16 +13,12 @@ df -h . | tee logs/task_01/disk_space.txt
 if [ ! -s "data/raw/${RUN}.fastq.gz" ]; then
   mkdir -p "data/raw/${RUN}"
   LOG="logs/task_01/download.${RUN}.log"
-  if prefetch "${RUN}" --output-directory data/raw > "logs/task_01/prefetch.${RUN}.log" 2>&1; then
-    echo "# $(date -u +%FT%TZ) prefetch ${RUN} succeeded" > "${LOG}"
-  else
-    URL="https://sra-pub-run-odp.s3.amazonaws.com/sra/${RUN}/${RUN}"
-    {
-      echo "# $(date -u +%FT%TZ) prefetch failed (see prefetch.${RUN}.log); fallback to NCBI AWS S3 mirror"
-      echo "Command: curl -sS -fL -C - --retry 10 -o data/raw/${RUN}/${RUN}.sra ${URL}"
-    } > "${LOG}"
-    curl -sS -fL -C - --retry 10 -o "data/raw/${RUN}/${RUN}.sra" "${URL}" 2>> "${LOG}"
-  fi
+  URL="https://sra-pub-run-odp.s3.amazonaws.com/sra/${RUN}/${RUN}"
+  {
+    echo "# Retrieval log for ${RUN} (retrieved $(date -u +%Y-%m-%d) via NCBI AWS S3 mirror with curl)"
+    echo "Command: curl -C - --retry 10 -L -o data/raw/${RUN}/${RUN}.sra ${URL}"
+  } > "${LOG}"
+  curl -C - --retry 10 -L -o "data/raw/${RUN}/${RUN}.sra" "${URL}" 2>> "${LOG}"
   SRA_FILE=$(find "data/raw/${RUN}" -type f \( -name "*.sra" -o -name "*.sralite" \) | head -n 1)
   if [ -z "${SRA_FILE}" ]; then
     echo "ERROR: Could not locate downloaded SRA file for ${RUN}" >&2
