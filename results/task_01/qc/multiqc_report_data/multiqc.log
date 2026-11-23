@@ -1,107 +1,107 @@
-[2026-11-21 23:31:53,669] root                                               [DEBUG  ]  Logging to file: /tmp/tmp_l0xhxtl/multiqc.log
-[2026-11-21 23:31:53,689] multiqc.core.update_config                         [DEBUG  ]  This is MultiQC v1.35
-[2026-11-21 23:31:53,689] multiqc.core.update_config                         [DEBUG  ]  Running Python 3.13.18 | packaged by conda-forge | (main, Oct 26 2026, 11:38:18) [GCC 15.3.0]
-[2026-11-21 23:31:53,704] multiqc.core.update_config                         [DEBUG  ]  Ignoring files, directories and paths that match: *multiqc_report_data*
-[2026-11-21 23:31:53,711] urllib3.connectionpool                             [DEBUG  ]  Starting new HTTPS connection (1): api.multiqc.info:443
-[2026-11-21 23:31:54,398] urllib3.connectionpool                             [DEBUG  ]  https://api.multiqc.info:443 "GET /version?version_multiqc=1.35&version_python=3.13.18&operating_system=Linux&is_docker=False&is_singularity=False&is_conda=True&is_uv=False&is_ci=False&is_notebook=False&ai_summary=False&ai_summary_full=False&ai_provider=seqera HTTP/1.1" 200 178
-[2026-11-21 23:31:54,404] multiqc.core.version_check                         [DEBUG  ]  Latest MultiQC version is v1.35, released 2026-05-13
-[2026-11-21 23:31:54,406] multiqc.multiqc                                    [DEBUG  ]  Working dir : /mnt/c/Users/PC/drosophila-msl2-chipseq
-[2026-11-21 23:31:54,406] multiqc.multiqc                                    [DEBUG  ]  Template    : default
-[2026-11-21 23:31:54,415] multiqc.multiqc                                    [DEBUG  ]  Command used: /home/su-/miniforge3/envs/msl2-chipseq/bin/multiqc results/task_01/qc logs/task_01 --ignore *multiqc_report_data* --outdir results/task_01/qc --filename multiqc_report.html --force
-[2026-11-21 23:31:54,422] multiqc.core.file_search                           [INFO   ]  Search path: /mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc
-[2026-11-21 23:31:54,423] multiqc.core.file_search                           [INFO   ]  Search path: /mnt/c/Users/PC/drosophila-msl2-chipseq/logs/task_01
-[2026-11-21 23:31:54,424] multiqc.core.file_search                           [DEBUG  ]  Analysing modules: bases2fastq, cellranger_arc, cells2stats, deacon, hicstuff, hifi_trimmer, methurator, ribotish, ribowaltz, riker, seqkit, sompy, xenium, custom_content, ccs, ngsderive, purple, conpair, isoseq, lima, peddy, percolator, haplocheck, somalier, methylqa, mosdepth, phantompeakqualtools, qualimap, bamdst, preseq, hifiasm, quast, qorts, rna_seqc, rockhopper, rsem, rseqc, busco, checkm, bustools, goleft_indexcov, gffcompare, disambiguate, supernova, deeptools, sargasso, verifybamid, mirtrace, happy, mirtop, glimpse, gopeaks, homer, hops, macs2, theta2, snpeff, gatk, htseq, bcftools, featurecounts, fgbio, dragen, dragen_fastqc, dedup, pbmarkdup, damageprofiler, mapdamage, biobambam2, jcvi, mtnucratio, picard, vep, bakta, prokka, checkm2, qc3C, nanoq, nanostat, samblaster, samtools, bamtools, sambamba, ngsbits, pairtools, sexdeterrmine, seqera_cli, eigenstratdatabasetools, jellyfish, vcftools, longranger, stacks, varscan2, snippy, umicollapse, umitools, truvari, megahit, sincei, ganon, gtdbtk, bbmap, bismark, biscuit, diamond, hicexplorer, hicup, hicpro, salmon, kallisto, slamdunk, star, hisat2, tophat, bowtie2, bowtie1, hostile, cellranger, checkatlas, snpsplit, odgi, vg, pangolin, nextclade, freyja, humid, kat, leehom, librarian, nonpareil, adapterremoval, bbduk, clipandmerge, cutadapt, trim_galore, flexbar, sourmash, kaiju, kraken, malt, motus, trimmomatic, sickle, skewer, sortmerna, biobloomtools, seqfu, fastq_screen, fastqe, afterqc, fastp, fastqc, sequali, filtlong, prinseqplusplus, pychopper, porechop, pycoqc, minionqc, anglerfish, multivcfanalyzer, clusterflow, checkqc, bcl2fastq, bclconvert, interop, ivar, flash, seqyclean, optitype, whatshap, spaceranger, xenome, xengsort, metaphlan, sylphtax, seqwho, telseq, ataqv, mgikit, mosaicatcher, software_versions
-[2026-11-21 23:31:54,424] multiqc.core.file_search                           [DEBUG  ]  Search keys: adapterremoval, afterqc, anglerfish, ataqv, bakta, bamdst, bamtools, bases2fastq, bbduk, bbmap, bcftools, bcl2fastq, bclconvert, biobambam2, biobloomtools, biscuit, bismark, bowtie1, bowtie2, busco, bustools, ccs, cellranger, cellranger_arc, cells2stats, checkatlas, checkm, checkm2, checkqc, clipandmerge, clusterflow, conpair, custom_content, cutadapt, damageprofiler, deacon, dedup, deeptools, diamond, disambiguate, dragen, dragen_fastqc, eigenstratdatabasetools, fastp, fastq_screen, fastqc, fastqe, featurecounts, fgbio, filtlong, flash, flexbar, freyja, ganon, gatk, gffcompare, glimpse, goleft_indexcov, gopeaks, gtdbtk, haplocheck, happy, hicexplorer, hicpro, hicstuff, hicup, hifi_trimmer, hifiasm, hisat2, homer, hops, hostile, htseq, humid, interop, isoseq, ivar, jcvi, jellyfish, kaiju, kallisto, kat, kraken, leehom, librarian, lima, longranger, macs2, malt, mapdamage, megahit, metaphlan, methurator, methylqa, mgikit, minionqc, mirtop, mirtrace, mosaicatcher, mosdepth, motus, mtnucratio, multiqc_data, multivcfanalyzer, nanoq, nanostat, nextclade, ngsbits, ngsderive, nonpareil, odgi, optitype, pairtools, pangolin, pbmarkdup, peddy, percolator, phantompeakqualtools, picard, porechop, preseq, prinseqplusplus, prokka, purple, pychopper, pycoqc, qc3C, qorts, qualimap, quast, ribotish, ribowaltz, riker, rna_seqc, rockhopper, rsem, rseqc, salmon, sambamba, samblaster, samtools, sargasso, seqera_cli, seqfu, seqkit, sequali, seqwho, seqyclean, sexdeterrmine, sickle, sincei, skewer, slamdunk, snippy, snpeff, snpsplit, software_versions, somalier, sompy, sortmerna, sourmash, spaceranger, stacks, star, supernova, sylphtax, telseq, theta2, tophat, trim_galore, trimmomatic, truvari, umicollapse, umitools, varscan2, vcftools, vep, verifybamid, vg, whatshap, xengsort, xenium, xenome
-[2026-11-21 23:31:57,903] multiqc.report                                     [DEBUG  ]  Summary of files that were skipped by the search: |skipped_ignore_pattern: 3|, |skipped_module_specific_max_filesize: 5|, |skipped_no_match: 14|, |skipped_directory_fn_ignore_dirs: 1|
-[2026-11-21 23:31:57,915] multiqc.core.exec_modules                          [DEBUG  ]  Running module: custom_content
-[2026-11-21 23:31:57,922] multiqc.core.exec_modules                          [DEBUG  ]  No samples found: custom_content
-[2026-11-21 23:31:57,922] multiqc.core.exec_modules                          [DEBUG  ]  Running module: htseq
-[2026-11-21 23:31:57,945] multiqc.core.exec_modules                          [DEBUG  ]  No samples found: htseq
-[2026-11-21 23:31:57,945] multiqc.core.exec_modules                          [DEBUG  ]  Running module: samtools
-[2026-11-21 23:31:58,100] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools_alignment_plot: found old_data = False
-[2026-11-21 23:31:58,100] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools_alignment_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,472] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-stats-dp: found old_data = False
-[2026-11-21 23:31:58,472] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-stats-dp: no old data or empty, using new data only
-[2026-11-21 23:31:58,533] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_stats.txt
-[2026-11-21 23:31:58,533] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_stats.json
-[2026-11-21 23:31:58,533] multiqc.modules.samtools.samtools                  [INFO   ]  Found 2 stats reports
-[2026-11-21 23:31:58,618] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-table: found old_data = False
-[2026-11-21 23:31:58,618] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-table: no old data or empty, using new data only
-[2026-11-21 23:31:58,634] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-pct-table: found old_data = False
-[2026-11-21 23:31:58,634] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-pct-table: no old data or empty, using new data only
-[2026-11-21 23:31:58,651] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_flagstat.txt
-[2026-11-21 23:31:58,651] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_flagstat.json
-[2026-11-21 23:31:58,651] multiqc.modules.samtools.samtools                  [INFO   ]  Found 2 flagstat reports
-[2026-11-21 23:31:58,682] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-xy-plot: found old_data = False
-[2026-11-21 23:31:58,683] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-xy-plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,698] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-mapped-reads-plot: found old_data = False
-[2026-11-21 23:31:58,698] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-mapped-reads-plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,710] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_idxstats.txt
-[2026-11-21 23:31:58,730] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_idxstats.json
-[2026-11-21 23:31:58,731] multiqc.modules.samtools.samtools                  [INFO   ]  Found 2 idxstats reports
-[2026-11-21 23:31:58,731] multiqc.base_module                                [DEBUG  ]  samtools: deleting attribute self.samtools_idxstats
-[2026-11-21 23:31:58,732] multiqc.core.exec_modules                          [DEBUG  ]  Running module: bowtie2
-[2026-11-21 23:31:58,750] multiqc.modules.bowtie2.bowtie2                    [INFO   ]  Found 1 reports
-[2026-11-21 23:31:58,750] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_bowtie2.txt
-[2026-11-21 23:31:58,751] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_bowtie2.json
-[2026-11-21 23:31:58,752] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for bowtie2_se_plot: found old_data = False
-[2026-11-21 23:31:58,752] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for bowtie2_se_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,771] multiqc.base_module                                [DEBUG  ]  bowtie2: deleting attribute self.bowtie2_data
-[2026-11-21 23:31:58,771] multiqc.base_module                                [DEBUG  ]  bowtie2: deleting attribute self.num_se
-[2026-11-21 23:31:58,771] multiqc.base_module                                [DEBUG  ]  bowtie2: deleting attribute self.num_pe
-[2026-11-21 23:31:58,772] multiqc.core.exec_modules                          [DEBUG  ]  Running module: fastqc
-[2026-11-21 23:31:58,806] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 2 reports
-[2026-11-21 23:31:58,807] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_counts_plot: found old_data = False
-[2026-11-21 23:31:58,807] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_counts_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,828] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_sequence_quality_plot: found old_data = False
-[2026-11-21 23:31:58,828] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_sequence_quality_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,838] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_quality_scores_plot: found old_data = False
-[2026-11-21 23:31:58,838] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_quality_scores_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,853] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_gc_content_plot: found old_data = False
-[2026-11-21 23:31:58,853] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_gc_content_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,864] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_n_content_plot: found old_data = False
-[2026-11-21 23:31:58,864] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_n_content_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,874] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_duplication_levels_plot: found old_data = False
-[2026-11-21 23:31:58,874] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_duplication_levels_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,884] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_overrepresented_sequences_plot: found old_data = False
-[2026-11-21 23:31:58,884] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_overrepresented_sequences_plot: no old data or empty, using new data only
-[2026-11-21 23:31:58,897] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_top_overrepresented_sequences_table: found old_data = False
-[2026-11-21 23:31:58,897] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_top_overrepresented_sequences_table: no old data or empty, using new data only
-[2026-11-21 23:31:58,913] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc-status-check-heatmap: found old_data = False
-[2026-11-21 23:31:58,913] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc-status-check-heatmap: no old data or empty, using new data only
-[2026-11-21 23:31:58,940] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_fastqc.txt
-[2026-11-21 23:31:58,941] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_fastqc.json
-[2026-11-21 23:31:58,943] multiqc.base_module                                [DEBUG  ]  fastqc: deleting attribute self.order_of_duplication_levels
-[2026-11-21 23:31:58,943] multiqc.base_module                                [DEBUG  ]  fastqc: deleting attribute self.status_colours
-[2026-11-21 23:31:58,943] multiqc.core.software_versions                     [DEBUG  ]  Reading software versions from config.software_versions
-[2026-11-21 23:31:58,950] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_software_versions.txt
-[2026-11-21 23:31:58,950] multiqc.core.write_results                         [DEBUG  ]  Rendering plots
-[2026-11-21 23:31:58,981] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for general_stats_table: found old_data = False
-[2026-11-21 23:31:58,981] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for general_stats_table: no old data or empty, using new data only
-[2026-11-21 23:31:59,015] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_general_stats.txt
-[2026-11-21 23:31:59,015] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_general_stats.json
-[2026-11-21 23:31:59,020] multiqc.core.ai                                    [DEBUG  ]  Saved AI prompt to multiqc_data/llms-full.txt
-[2026-11-21 23:31:59,153] multiqc.core.write_results                         [DEBUG  ]  Exporting plot data to files
-[2026-11-21 23:31:59,154] multiqc.report                                     [DEBUG  ]  Wrote data file samtools_alignment_plot.txt
-[2026-11-21 23:31:59,155] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-stats-dp.txt
-[2026-11-21 23:31:59,155] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-flagstat-table.txt
-[2026-11-21 23:31:59,156] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-flagstat-pct-table.txt
-[2026-11-21 23:31:59,156] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-xy-plot.txt
-[2026-11-21 23:31:59,157] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-mapped-reads-plot_Normalised_Counts.txt
-[2026-11-21 23:31:59,157] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-mapped-reads-plot_Observed_over_Expected_Counts.txt
-[2026-11-21 23:31:59,158] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-mapped-reads-plot_Raw_Counts.txt
-[2026-11-21 23:31:59,159] multiqc.report                                     [DEBUG  ]  Wrote data file bowtie2_se_plot.txt
-[2026-11-21 23:31:59,159] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_sequence_counts_plot.txt
-[2026-11-21 23:31:59,160] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_base_sequence_quality_plot.txt
-[2026-11-21 23:31:59,161] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_sequence_quality_scores_plot.txt
-[2026-11-21 23:31:59,162] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_sequence_gc_content_plot_Percentages.txt
-[2026-11-21 23:31:59,163] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_sequence_gc_content_plot_Counts.txt
-[2026-11-21 23:31:59,164] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_base_n_content_plot.txt
-[2026-11-21 23:31:59,165] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_sequence_duplication_levels_plot.txt
-[2026-11-21 23:31:59,166] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_overrepresented_sequences_plot.txt
-[2026-11-21 23:31:59,167] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_top_overrepresented_sequences_table.txt
-[2026-11-21 23:31:59,167] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc-status-check-heatmap.txt
-[2026-11-21 23:31:59,168] multiqc.core.write_results                         [DEBUG  ]  Moving data file from '/tmp/tmp_l0xhxtl/multiqc_data' to '/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data'
-[2026-11-21 23:32:00,438] multiqc.core.write_results                         [INFO   ]  Data        : results/task_01/qc/multiqc_report_data   (overwritten)
-[2026-11-21 23:32:00,558] multiqc.core.write_results                         [DEBUG  ]  Compressing plot data
-[2026-11-21 23:32:00,876] multiqc.core.write_results                         [INFO   ]  Report      : results/task_01/qc/multiqc_report.html   (overwritten)
+[2026-11-23 09:43:00,623] root                                               [DEBUG  ]  Logging to file: /tmp/tmpav6erfvx/multiqc.log
+[2026-11-23 09:43:00,636] multiqc.core.update_config                         [DEBUG  ]  This is MultiQC v1.35
+[2026-11-23 09:43:00,636] multiqc.core.update_config                         [DEBUG  ]  Running Python 3.13.18 | packaged by conda-forge | (main, Oct 26 2026, 11:38:18) [GCC 15.3.0]
+[2026-11-23 09:43:00,645] multiqc.core.update_config                         [DEBUG  ]  Ignoring files, directories and paths that match: *multiqc_report_data*
+[2026-11-23 09:43:00,648] urllib3.connectionpool                             [DEBUG  ]  Starting new HTTPS connection (1): api.multiqc.info:443
+[2026-11-23 09:43:01,065] urllib3.connectionpool                             [DEBUG  ]  https://api.multiqc.info:443 "GET /version?version_multiqc=1.35&version_python=3.13.18&operating_system=Linux&is_docker=False&is_singularity=False&is_conda=True&is_uv=False&is_ci=False&is_notebook=False&ai_summary=False&ai_summary_full=False&ai_provider=seqera HTTP/1.1" 200 178
+[2026-11-23 09:43:01,065] multiqc.core.version_check                         [DEBUG  ]  Latest MultiQC version is v1.35, released 2026-05-13
+[2026-11-23 09:43:01,066] multiqc.multiqc                                    [DEBUG  ]  Working dir : /mnt/c/Users/PC/drosophila-msl2-chipseq
+[2026-11-23 09:43:01,066] multiqc.multiqc                                    [DEBUG  ]  Template    : default
+[2026-11-23 09:43:01,070] multiqc.multiqc                                    [DEBUG  ]  Command used: /home/su-/miniforge3/envs/msl2-chipseq/bin/multiqc results/task_01/qc logs/task_01 --ignore *multiqc_report_data* --outdir results/task_01/qc --filename multiqc_report.html --force
+[2026-11-23 09:43:01,077] multiqc.core.file_search                           [INFO   ]  Search path: /mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc
+[2026-11-23 09:43:01,077] multiqc.core.file_search                           [INFO   ]  Search path: /mnt/c/Users/PC/drosophila-msl2-chipseq/logs/task_01
+[2026-11-23 09:43:01,078] multiqc.core.file_search                           [DEBUG  ]  Analysing modules: bases2fastq, cellranger_arc, cells2stats, deacon, hicstuff, hifi_trimmer, methurator, ribotish, ribowaltz, riker, seqkit, sompy, xenium, custom_content, ccs, ngsderive, purple, conpair, isoseq, lima, peddy, percolator, haplocheck, somalier, methylqa, mosdepth, phantompeakqualtools, qualimap, bamdst, preseq, hifiasm, quast, qorts, rna_seqc, rockhopper, rsem, rseqc, busco, checkm, bustools, goleft_indexcov, gffcompare, disambiguate, supernova, deeptools, sargasso, verifybamid, mirtrace, happy, mirtop, glimpse, gopeaks, homer, hops, macs2, theta2, snpeff, gatk, htseq, bcftools, featurecounts, fgbio, dragen, dragen_fastqc, dedup, pbmarkdup, damageprofiler, mapdamage, biobambam2, jcvi, mtnucratio, picard, vep, bakta, prokka, checkm2, qc3C, nanoq, nanostat, samblaster, samtools, bamtools, sambamba, ngsbits, pairtools, sexdeterrmine, seqera_cli, eigenstratdatabasetools, jellyfish, vcftools, longranger, stacks, varscan2, snippy, umicollapse, umitools, truvari, megahit, sincei, ganon, gtdbtk, bbmap, bismark, biscuit, diamond, hicexplorer, hicup, hicpro, salmon, kallisto, slamdunk, star, hisat2, tophat, bowtie2, bowtie1, hostile, cellranger, checkatlas, snpsplit, odgi, vg, pangolin, nextclade, freyja, humid, kat, leehom, librarian, nonpareil, adapterremoval, bbduk, clipandmerge, cutadapt, trim_galore, flexbar, sourmash, kaiju, kraken, malt, motus, trimmomatic, sickle, skewer, sortmerna, biobloomtools, seqfu, fastq_screen, fastqe, afterqc, fastp, fastqc, sequali, filtlong, prinseqplusplus, pychopper, porechop, pycoqc, minionqc, anglerfish, multivcfanalyzer, clusterflow, checkqc, bcl2fastq, bclconvert, interop, ivar, flash, seqyclean, optitype, whatshap, spaceranger, xenome, xengsort, metaphlan, sylphtax, seqwho, telseq, ataqv, mgikit, mosaicatcher, software_versions
+[2026-11-23 09:43:01,078] multiqc.core.file_search                           [DEBUG  ]  Search keys: adapterremoval, afterqc, anglerfish, ataqv, bakta, bamdst, bamtools, bases2fastq, bbduk, bbmap, bcftools, bcl2fastq, bclconvert, biobambam2, biobloomtools, biscuit, bismark, bowtie1, bowtie2, busco, bustools, ccs, cellranger, cellranger_arc, cells2stats, checkatlas, checkm, checkm2, checkqc, clipandmerge, clusterflow, conpair, custom_content, cutadapt, damageprofiler, deacon, dedup, deeptools, diamond, disambiguate, dragen, dragen_fastqc, eigenstratdatabasetools, fastp, fastq_screen, fastqc, fastqe, featurecounts, fgbio, filtlong, flash, flexbar, freyja, ganon, gatk, gffcompare, glimpse, goleft_indexcov, gopeaks, gtdbtk, haplocheck, happy, hicexplorer, hicpro, hicstuff, hicup, hifi_trimmer, hifiasm, hisat2, homer, hops, hostile, htseq, humid, interop, isoseq, ivar, jcvi, jellyfish, kaiju, kallisto, kat, kraken, leehom, librarian, lima, longranger, macs2, malt, mapdamage, megahit, metaphlan, methurator, methylqa, mgikit, minionqc, mirtop, mirtrace, mosaicatcher, mosdepth, motus, mtnucratio, multiqc_data, multivcfanalyzer, nanoq, nanostat, nextclade, ngsbits, ngsderive, nonpareil, odgi, optitype, pairtools, pangolin, pbmarkdup, peddy, percolator, phantompeakqualtools, picard, porechop, preseq, prinseqplusplus, prokka, purple, pychopper, pycoqc, qc3C, qorts, qualimap, quast, ribotish, ribowaltz, riker, rna_seqc, rockhopper, rsem, rseqc, salmon, sambamba, samblaster, samtools, sargasso, seqera_cli, seqfu, seqkit, sequali, seqwho, seqyclean, sexdeterrmine, sickle, sincei, skewer, slamdunk, snippy, snpeff, snpsplit, software_versions, somalier, sompy, sortmerna, sourmash, spaceranger, stacks, star, supernova, sylphtax, telseq, theta2, tophat, trim_galore, trimmomatic, truvari, umicollapse, umitools, varscan2, vcftools, vep, verifybamid, vg, whatshap, xengsort, xenium, xenome
+[2026-11-23 09:43:03,979] multiqc.report                                     [DEBUG  ]  Summary of files that were skipped by the search: |skipped_ignore_pattern: 3|, |skipped_module_specific_max_filesize: 7|, |skipped_no_match: 22|, |skipped_directory_fn_ignore_dirs: 1|
+[2026-11-23 09:43:03,984] multiqc.core.exec_modules                          [DEBUG  ]  Running module: custom_content
+[2026-11-23 09:43:03,992] multiqc.core.exec_modules                          [DEBUG  ]  No samples found: custom_content
+[2026-11-23 09:43:03,992] multiqc.core.exec_modules                          [DEBUG  ]  Running module: htseq
+[2026-11-23 09:43:04,001] multiqc.core.exec_modules                          [DEBUG  ]  No samples found: htseq
+[2026-11-23 09:43:04,002] multiqc.core.exec_modules                          [DEBUG  ]  Running module: samtools
+[2026-11-23 09:43:04,132] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools_alignment_plot: found old_data = False
+[2026-11-23 09:43:04,132] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools_alignment_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,330] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-stats-dp: found old_data = False
+[2026-11-23 09:43:04,330] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-stats-dp: no old data or empty, using new data only
+[2026-11-23 09:43:04,350] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_stats.txt
+[2026-11-23 09:43:04,351] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_stats.json
+[2026-11-23 09:43:04,351] multiqc.modules.samtools.samtools                  [INFO   ]  Found 4 stats reports
+[2026-11-23 09:43:04,448] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-table: found old_data = False
+[2026-11-23 09:43:04,448] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-table: no old data or empty, using new data only
+[2026-11-23 09:43:04,468] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-pct-table: found old_data = False
+[2026-11-23 09:43:04,468] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-flagstat-pct-table: no old data or empty, using new data only
+[2026-11-23 09:43:04,483] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_flagstat.txt
+[2026-11-23 09:43:04,483] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_flagstat.json
+[2026-11-23 09:43:04,483] multiqc.modules.samtools.samtools                  [INFO   ]  Found 4 flagstat reports
+[2026-11-23 09:43:04,554] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-xy-plot: found old_data = False
+[2026-11-23 09:43:04,555] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-xy-plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,569] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-mapped-reads-plot: found old_data = False
+[2026-11-23 09:43:04,569] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for samtools-idxstats-mapped-reads-plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,585] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_idxstats.txt
+[2026-11-23 09:43:04,619] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_samtools_idxstats.json
+[2026-11-23 09:43:04,619] multiqc.modules.samtools.samtools                  [INFO   ]  Found 4 idxstats reports
+[2026-11-23 09:43:04,619] multiqc.base_module                                [DEBUG  ]  samtools: deleting attribute self.samtools_idxstats
+[2026-11-23 09:43:04,620] multiqc.core.exec_modules                          [DEBUG  ]  Running module: bowtie2
+[2026-11-23 09:43:04,637] multiqc.modules.bowtie2.bowtie2                    [INFO   ]  Found 1 reports
+[2026-11-23 09:43:04,638] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_bowtie2.txt
+[2026-11-23 09:43:04,638] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_bowtie2.json
+[2026-11-23 09:43:04,639] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for bowtie2_se_plot: found old_data = False
+[2026-11-23 09:43:04,639] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for bowtie2_se_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,651] multiqc.base_module                                [DEBUG  ]  bowtie2: deleting attribute self.bowtie2_data
+[2026-11-23 09:43:04,652] multiqc.base_module                                [DEBUG  ]  bowtie2: deleting attribute self.num_se
+[2026-11-23 09:43:04,652] multiqc.base_module                                [DEBUG  ]  bowtie2: deleting attribute self.num_pe
+[2026-11-23 09:43:04,652] multiqc.core.exec_modules                          [DEBUG  ]  Running module: fastqc
+[2026-11-23 09:43:04,683] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 2 reports
+[2026-11-23 09:43:04,684] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_counts_plot: found old_data = False
+[2026-11-23 09:43:04,684] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_counts_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,698] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_sequence_quality_plot: found old_data = False
+[2026-11-23 09:43:04,698] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_sequence_quality_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,708] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_quality_scores_plot: found old_data = False
+[2026-11-23 09:43:04,708] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_quality_scores_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,724] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_gc_content_plot: found old_data = False
+[2026-11-23 09:43:04,724] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_sequence_gc_content_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,737] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_n_content_plot: found old_data = False
+[2026-11-23 09:43:04,737] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_per_base_n_content_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,748] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_duplication_levels_plot: found old_data = False
+[2026-11-23 09:43:04,748] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_sequence_duplication_levels_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,761] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_overrepresented_sequences_plot: found old_data = False
+[2026-11-23 09:43:04,761] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_overrepresented_sequences_plot: no old data or empty, using new data only
+[2026-11-23 09:43:04,780] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_top_overrepresented_sequences_table: found old_data = False
+[2026-11-23 09:43:04,780] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc_top_overrepresented_sequences_table: no old data or empty, using new data only
+[2026-11-23 09:43:04,804] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc-status-check-heatmap: found old_data = False
+[2026-11-23 09:43:04,804] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for fastqc-status-check-heatmap: no old data or empty, using new data only
+[2026-11-23 09:43:04,822] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_fastqc.txt
+[2026-11-23 09:43:04,823] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_fastqc.json
+[2026-11-23 09:43:04,825] multiqc.base_module                                [DEBUG  ]  fastqc: deleting attribute self.order_of_duplication_levels
+[2026-11-23 09:43:04,825] multiqc.base_module                                [DEBUG  ]  fastqc: deleting attribute self.status_colours
+[2026-11-23 09:43:04,825] multiqc.core.software_versions                     [DEBUG  ]  Reading software versions from config.software_versions
+[2026-11-23 09:43:04,835] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_software_versions.txt
+[2026-11-23 09:43:04,835] multiqc.core.write_results                         [DEBUG  ]  Rendering plots
+[2026-11-23 09:43:04,870] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for general_stats_table: found old_data = False
+[2026-11-23 09:43:04,870] multiqc.plots.plot                                 [DEBUG  ]  merge_with_previous for general_stats_table: no old data or empty, using new data only
+[2026-11-23 09:43:04,894] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_general_stats.txt
+[2026-11-23 09:43:04,896] multiqc.report                                     [DEBUG  ]  Wrote data file multiqc_general_stats.json
+[2026-11-23 09:43:04,900] multiqc.core.ai                                    [DEBUG  ]  Saved AI prompt to multiqc_data/llms-full.txt
+[2026-11-23 09:43:04,977] multiqc.core.write_results                         [DEBUG  ]  Exporting plot data to files
+[2026-11-23 09:43:04,977] multiqc.report                                     [DEBUG  ]  Wrote data file samtools_alignment_plot.txt
+[2026-11-23 09:43:04,978] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-stats-dp.txt
+[2026-11-23 09:43:04,978] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-flagstat-table.txt
+[2026-11-23 09:43:04,979] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-flagstat-pct-table.txt
+[2026-11-23 09:43:04,979] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-xy-plot.txt
+[2026-11-23 09:43:04,980] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-mapped-reads-plot_Normalised_Counts.txt
+[2026-11-23 09:43:04,980] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-mapped-reads-plot_Observed_over_Expected_Counts.txt
+[2026-11-23 09:43:04,980] multiqc.report                                     [DEBUG  ]  Wrote data file samtools-idxstats-mapped-reads-plot_Raw_Counts.txt
+[2026-11-23 09:43:04,981] multiqc.report                                     [DEBUG  ]  Wrote data file bowtie2_se_plot.txt
+[2026-11-23 09:43:04,981] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_sequence_counts_plot.txt
+[2026-11-23 09:43:04,982] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_base_sequence_quality_plot.txt
+[2026-11-23 09:43:04,982] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_sequence_quality_scores_plot.txt
+[2026-11-23 09:43:04,983] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_sequence_gc_content_plot_Percentages.txt
+[2026-11-23 09:43:04,983] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_sequence_gc_content_plot_Counts.txt
+[2026-11-23 09:43:04,984] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_per_base_n_content_plot.txt
+[2026-11-23 09:43:04,984] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_sequence_duplication_levels_plot.txt
+[2026-11-23 09:43:04,984] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_overrepresented_sequences_plot.txt
+[2026-11-23 09:43:04,984] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc_top_overrepresented_sequences_table.txt
+[2026-11-23 09:43:04,985] multiqc.report                                     [DEBUG  ]  Wrote data file fastqc-status-check-heatmap.txt
+[2026-11-23 09:43:04,985] multiqc.core.write_results                         [DEBUG  ]  Moving data file from '/tmp/tmpav6erfvx/multiqc_data' to '/mnt/c/Users/PC/drosophila-msl2-chipseq/results/task_01/qc/multiqc_report_data'
+[2026-11-23 09:43:05,788] multiqc.core.write_results                         [INFO   ]  Data        : results/task_01/qc/multiqc_report_data   (overwritten)
+[2026-11-23 09:43:05,913] multiqc.core.write_results                         [DEBUG  ]  Compressing plot data
+[2026-11-23 09:43:06,159] multiqc.core.write_results                         [INFO   ]  Report      : results/task_01/qc/multiqc_report.html   (overwritten)

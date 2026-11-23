@@ -3,23 +3,24 @@ set -euo pipefail
 
 mkdir -p data/raw data/tmp references logs/task_01
 
-# 1. Download and validate SRA run
 col() { awk -F'\t' -v c="$1" 'NR==1{for(i=1;i<=NF;i++) if($i==c) k=i} NR==2{print $k}' metadata/samples.tsv; }
 RUN=$(col sra_run)
 EXP_READS=$(col n_spots)
 EXP_LEN=$(col read_length_bp)
 
+# 1. Check disk space, download and validate SRA run
+df -h . | tee logs/task_01/disk_space.txt
 if [ ! -s "data/raw/${RUN}.fastq.gz" ]; then
-  prefetch "${RUN}" --output-directory data/raw
+  prefetch "${RUN}" --output-directory data/raw 2>&1 | tee "logs/task_01/prefetch.${RUN}.log"
   SRA_FILE=$(find "data/raw/${RUN}" -type f \( -name "*.sra" -o -name "*.sralite" \) | head -n 1)
   if [ -z "${SRA_FILE}" ]; then
     echo "ERROR: Could not locate downloaded SRA file for ${RUN}" >&2
     exit 1
   fi
   vdb-validate "${SRA_FILE}" 2>&1 | tee "logs/task_01/vdb_validate.${RUN}.log"
-  # 2. Convert validated SRA file to gzipped FASTQ
-  fasterq-dump "${SRA_FILE}" --outdir data/raw --temp data/tmp --threads 4
-  gzip -f "data/raw/${RUN}.fastq"
+  # 2. Convert validated SRA file to deterministic gzipped FASTQ (keep local SRA archive)
+  fasterq-dump "${SRA_FILE}" --outdir data/raw --temp data/tmp --threads 4 2>&1 | tee "logs/task_01/fasterq_dump.${RUN}.log"
+  gzip -nf "data/raw/${RUN}.fastq"
 else
   SRA_FILE=$(find "data/raw/${RUN}" -type f \( -name "*.sra" -o -name "*.sralite" \) 2>/dev/null | head -n 1 || true)
   if [ -n "${SRA_FILE}" ]; then

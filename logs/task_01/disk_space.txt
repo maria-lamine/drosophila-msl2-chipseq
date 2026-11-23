@@ -1,0 +1,2 @@
+Filesystem      Size  Used Avail Use% Mounted on
+C:\             477G  157G  320G  33% /mnt/c

@@ -1,0 +1,1 @@
+samtools quickcheck: OK results/task_01/bam/GSM929149.dm6.sorted.bam results/task_01/bam/GSM929149.dm6.primary_q30.bam
