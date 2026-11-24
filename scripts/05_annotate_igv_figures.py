@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Crop raw IGV-Web captures to a uniform viewport (1893x766) and prepend a 56 px metadata banner."""
+"""Crop raw IGV-Web captures to a uniform viewport (1890x953) and prepend a 56 px metadata banner."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-TARGET_W = 1893
-TARGET_H = 766
+TARGET_W = 1890
+TARGET_H = 953
 
 FIGURES = [
     (

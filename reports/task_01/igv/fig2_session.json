@@ -36,9 +36,7 @@
 			"order": 5,
 			"format": "bam",
 			"type": "alignment",
-			"height": 100,
 			"colorBy": "none",
-			"displayMode": "SQUISHED",
 			"file": "GSM929149.dm6.primary_q30.bam",
 			"indexFile": "GSM929149.dm6.primary_q30.bam.bai"
 		},
