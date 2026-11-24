@@ -46,7 +46,7 @@ fi
 # 3. Download dm6 reference, verify UCSC MD5, and build/verify Bowtie2 index
 UCSC=https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips
 [ -s references/dm6.fa.gz ] || curl -fsL "${UCSC}/dm6.fa.gz" -o references/dm6.fa.gz
-curl -fsL "${UCSC}/md5sum.txt" | grep ' dm6.fa.gz$' > logs/task_01/dm6.fa.gz.ucsc_md5.txt
+[ -s logs/task_01/dm6.fa.gz.ucsc_md5.txt ] || curl -fsL "${UCSC}/md5sum.txt" | grep ' dm6.fa.gz$' > logs/task_01/dm6.fa.gz.ucsc_md5.txt
 md5sum references/dm6.fa.gz | tee logs/task_01/dm6.fa.gz.md5
 (cd references && md5sum -c ../logs/task_01/dm6.fa.gz.ucsc_md5.txt) | tee logs/task_01/dm6.fa.gz.md5check.txt
 

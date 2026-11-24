@@ -11,7 +11,7 @@ RAW_BAM="results/task_01/bam/${SAMPLE}.dm6.sorted.bam"
 FILT_BAM="results/task_01/bam/${SAMPLE}.dm6.primary_q30.bam"
 
 # 1. Align single-end reads and coordinate-sort
-bowtie2 -p 4 -x references/dm6 -U "data/raw/${RUN}.fastq.gz" \
+bowtie2 -p 4 --reorder -x references/dm6 -U "data/raw/${RUN}.fastq.gz" \
   2> "logs/task_01/bowtie2.${SAMPLE}.log" \
   | samtools sort -@ 4 -o "${RAW_BAM}" -
 samtools index "${RAW_BAM}"
