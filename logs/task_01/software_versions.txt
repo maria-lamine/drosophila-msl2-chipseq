@@ -10,3 +10,4 @@ bowtie2: /home/su-/miniforge3/envs/msl2-chipseq/bin/bowtie2-align-s-v256 version
 samtools: samtools 1.24
 bamCoverage: bamCoverage 4.0.0
 IGV-Web: 3.0.1 (web application, https://igv.org/app)
+IGV-Web: 2.4.10 (igv.js 3.8.8) (recorded manually from Help > About, https://igv.org/app)

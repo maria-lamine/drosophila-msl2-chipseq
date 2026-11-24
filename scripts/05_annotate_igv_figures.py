@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Crop raw IGV-Web captures to the viewport (1877x937) and prepend a 56 px metadata banner."""
+"""Crop raw IGV-Web captures to a uniform viewport (1893x766) and prepend a 56 px metadata banner."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+
+TARGET_W = 1893
+TARGET_H = 766
 
 FIGURES = [
     (
@@ -37,11 +40,9 @@ def main():
     banner_h = 56
     for raw_path, out_path, label in FIGURES:
         im = Image.open(raw_path).convert("RGB")
-        # Crop browser chrome if raw screenshot exceeds viewport width/height
-        if im.size != (1877, 937):
-            left = max(0, (im.width - 1877) // 2)
-            top = max(0, im.height - 937)
-            im = im.crop((left, top, left + min(1877, im.width), top + min(937, im.height)))
+        left = max(0, (im.width - TARGET_W) // 2)
+        top = max(0, im.height - TARGET_H)
+        im = im.crop((left, top, left + min(TARGET_W, im.width), top + min(TARGET_H, im.height)))
         w, h = im.size
         out = Image.new("RGB", (w, h + banner_h), "white")
         out.paste(im, (0, banner_h))

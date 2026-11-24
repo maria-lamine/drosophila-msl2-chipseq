@@ -1,0 +1,68 @@
+{
+	"version": "3.8.8",
+	"showSampleNames": false,
+	"reference": {
+		"id": "dm6",
+		"name": "D. melanogaster (dm6)",
+		"twoBitURL": "https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.2bit",
+		"wholeGenomeView": true,
+		"aliasURL": "https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.chromAlias.txt",
+		"cytobandURL": "https://hgdownload.soe.ucsc.edu/goldenPath/dm6/database/cytoBandIdeo.txt.gz",
+		"chromosomeOrder": [
+			"chr2L",
+			"chr2R",
+			"chr3L",
+			"chr3R",
+			"chr4",
+			"chrX",
+			"chrY"
+		],
+		"chromSizesURL": "https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.chrom.sizes",
+		"hubs": [
+			"https://igv.org/genomes/hubs/dm6/hub.txt",
+			"https://hgdownload.soe.ucsc.edu/hubs/GCF/000/001/215/GCF_000001215.4/hub.txt"
+		]
+	},
+	"locus": "chr3R:30,035,000-30,055,000",
+	"roi": [],
+	"tracks": [
+		{
+			"type": "sequence",
+			"order": -9007199254740991
+		},
+		{
+			"name": "GSM929149.dm6.primary_q30.bam",
+			"filename": "GSM929149.dm6.primary_q30.bam",
+			"order": 5,
+			"format": "bam",
+			"type": "alignment",
+			"height": 100,
+			"colorBy": "none",
+			"displayMode": "SQUISHED",
+			"file": "GSM929149.dm6.primary_q30.bam",
+			"indexFile": "GSM929149.dm6.primary_q30.bam.bai"
+		},
+		{
+			"name": "GSM929149.dm6.CPM.bw",
+			"filename": "GSM929149.dm6.CPM.bw",
+			"order": 6,
+			"format": "bigwig",
+			"type": "wig",
+			"min": 0,
+			"max": 25,
+			"file": "GSM929149.dm6.CPM.bw"
+		},
+		{
+			"id": "refseqCurated",
+			"name": "Refseq Curated",
+			"url": "https://hgdownload.soe.ucsc.edu/goldenPath/dm6/database/ncbiRefSeqCurated.txt.gz",
+			"indexed": false,
+			"format": "refgene",
+			"displayMode": "COLLAPSED",
+			"html": "https://www.ncbi.nlm.nih.gov/refseq/refseq_select/",
+			"order": 100000,
+			"type": "annotation",
+			"height": 70
+		}
+	]
+}
