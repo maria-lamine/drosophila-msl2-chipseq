@@ -9,7 +9,7 @@ mkdir -p logs/task_01
   for t in prefetch fasterq-dump fastqc multiqc bowtie2 samtools bamCoverage; do
     printf '%s: %s\n' "$t" "$("$t" --version 2>&1 | grep -m1 -E '[0-9]+\.[0-9]+')"
   done
-  printf 'IGV-Web: 3.0.1 (web application, https://igv.org/app)\n'
+  printf 'IGV-Web: 2.4.10 (igv.js 3.8.8) (web application, https://igv.org/app)\n'
 } > logs/task_01/software_versions.txt
 
 for s in 01_download 02_fastq_qc 03_align_and_filter 04_coverage; do

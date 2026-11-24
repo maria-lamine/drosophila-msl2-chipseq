@@ -3,6 +3,10 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
+  - python=3.13.18
+  - curl=8.23.0
+  - pillow=13.0.0
+  - pybigwig=0.3.29
   - bowtie2=2.5.5
   - deeptools=4.0.0
   - fastqc=0.13.0

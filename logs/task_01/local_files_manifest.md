@@ -2,7 +2,7 @@
 
 | Artifact | Size | MD5 | Status |
 | :--- | ---: | :--- | :--- |
-| `logs/task_01/software_versions.txt` | 347 B | `8076300eaa609543a9a42d4b3d75a00e` | Tracked |
+| `logs/task_01/software_versions.txt` | 383 B | `806d5e9ca3394b130f2ba5338db9e64643fd2d4fb9359f500308af4ac6ab89aa` | Tracked |
 | `logs/task_01/download.SRR495368.log` | 139 B | `f8b5c00a6555899e6bf471eac73c7d35620db3d50a04b604d80397719ea9816d` | Tracked |
 | `logs/task_01/vdb_validate.SRR495368.log` | 500 B | `51c4decc148a0621d7f5641c726fb44d` | Tracked |
 | `logs/task_01/fastq_reconversion_check.txt` | 92 B | `0e709715a4cdeec1a4be077d0b59fbb4` | Tracked |
