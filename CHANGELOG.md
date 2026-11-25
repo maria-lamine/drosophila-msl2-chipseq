@@ -14,7 +14,7 @@
 - Added `--reorder` to `bowtie2` in `scripts/03_align_and_filter.sh` (D6); the committed BAM checksums predate this change.
 - Cached the UCSC `md5sum.txt` in `scripts/01_download.sh` so offline reruns reuse it (D8).
 - Added `scripts/06_checks.sh`, wired into `scripts/run_all.sh` (D5); its outputs were not committed in this release.
-- Restored `task-01-v9` to its original commit `a08ef8d` (D10), as a lightweight tag.
+- Restored 'task-01-v9' to its original commit 'a88ef8d' (D10; subsequently recreated as an annotated tag in 'task-01-v14').
 - Note: this release did not change `README.md` or the version capture in `run_all.sh` (D7, D12), contrary to an earlier wording of this entry and of the tag message.
 
 ## [task-01-v12] - 2026-11-24
@@ -22,7 +22,7 @@
 
 ## [task-01-v11] - 2026-11-24
 - **IGV figures, sessions & SRA download (`D1`, `D2`, `D4`):** Replaced the single multi-locus session with per-figure IGV-Web sessions (`reports/task_01/igv/fig1_session.json`–`fig3_session.json`), aligned figure captures with the published report, and restored `prefetch` as primary retrieval with NCBI AWS S3 `curl` fallback in `scripts/01_download.sh`.
-- Note: the recaptured figures show an empty BAM track (no coverage, no reads); see N1 under Unreleased.
+- Note: the recaptured figures initially showed an empty BAM track (no coverage, no reads); resolved in 'task-01-v14' ('M1').
 
 ## [task-01-v10] - 2026-11-23
 - **Provenance & documentation (`R1`–`R6`):** Added `scripts/05_annotate_igv_figures.py`, initial IGV-Web session export, `CHANGELOG.md`, and software version logging in `logs/task_01/software_versions.txt`.
