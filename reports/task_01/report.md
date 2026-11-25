@@ -106,8 +106,6 @@ All three loci were inspected in IGV on `dm6` with assembly/coordinate banners, 
 ## 10. File Manifest & Checksums
 | Artifact | Size | MD5 | Status |
 | :--- | ---: | :--- | :--- |
-| Artifact | Size | MD5 | Status |
-| :--- | ---: | :--- | :--- |
 | `logs/task_01/software_versions.txt` | 409 B | `b363620309a579146ebfc414b244d3cf` | Tracked |
 | `logs/task_01/download.SRR495368.log` | 359 B | `81919550e6e201fc2d6d90ed97e9bc41` | Tracked |
 | `logs/task_01/vdb_validate.SRR495368.log` | 500 B | `51c4decc148a0621d7f5641c726fb44d` | Tracked |
