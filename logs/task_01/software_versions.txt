@@ -2,8 +2,8 @@ curl: 8.23.0
 Python: 3.13.18
 Pillow: 13.0.0
 pyBigWig: 0.3.29
-prefetch: 3.4.1
-fasterq-dump: 3.4.1
+prefetch: prefetch : 3.4.1
+fasterq-dump: fasterq-dump : 3.4.1
 fastqc: FastQC v0.13.0
 multiqc: multiqc, version 1.35
 bowtie2: /home/su-/miniforge3/envs/msl2-chipseq/bin/bowtie2-align-s-v256 version 2.5.5
