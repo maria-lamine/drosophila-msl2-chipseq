@@ -14,15 +14,22 @@ if [ ! -s "data/raw/${RUN}.fastq.gz" ]; then
   mkdir -p "data/raw/${RUN}"
   LOG="logs/task_01/download.${RUN}.log"
   URL="https://sra-pub-run-odp.s3.amazonaws.com/sra/${RUN}/${RUN}"
-  : > "${LOG}"
-  if ! command -v prefetch >/dev/null 2>&1 || ! prefetch "${RUN}" --output-directory "data/raw" >> "${LOG}" 2>&1; then
-    curl -fSL -C - --retry 10 -o "data/raw/${RUN}/${RUN}.sra" "${URL}" >> "${LOG}" 2>&1
+  echo "# $(date -u +%FT%TZ) prefetch ${RUN} --output-directory data/raw" > "${LOG}"
+  if command -v prefetch >/dev/null 2>&1 && prefetch "${RUN}" --output-directory data/raw >> "${LOG}" 2>&1; then
+    echo "# method: prefetch" >> "${LOG}"
+  else
+    {
+      echo "# $(date -u +%FT%TZ) prefetch unavailable or failed; fallback: curl -sS -fL -C - --retry 10 -o data/raw/${RUN}/${RUN}.sra ${URL}"
+      curl -sS -fL -C - --retry 10 -o "data/raw/${RUN}/${RUN}.sra" "${URL}" 2>&1
+      echo "# method: curl (NCBI AWS S3 mirror)"
+    } >> "${LOG}"
   fi
   SRA_FILE=$(find "data/raw/${RUN}" -type f \( -name "*.sra" -o -name "*.sralite" \) | head -n 1)
   if [ -z "${SRA_FILE}" ]; then
     echo "ERROR: Could not locate downloaded SRA file for ${RUN}" >&2
     exit 1
   fi
+  { ls -l "${SRA_FILE}"; md5sum "${SRA_FILE}"; } >> "${LOG}"
   vdb-validate "${SRA_FILE}" 2>&1 | tee "logs/task_01/vdb_validate.${RUN}.log"
   # 2. Convert validated SRA file to deterministic gzipped FASTQ (keep local SRA archive)
   fasterq-dump "${SRA_FILE}" --outdir data/raw --temp data/tmp --threads 4 2>&1 | tee "logs/task_01/fasterq_dump.${RUN}.log"
